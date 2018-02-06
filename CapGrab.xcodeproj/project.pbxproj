@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF9EC8BA2029302100ADFAD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */; };
+		FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8BB2029302100ADFAD3 /* ViewController.swift */; };
+		FF9EC8BF2029302100ADFAD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8BD2029302100ADFAD3 /* Main.storyboard */; };
+		FF9EC8C22029302100ADFAD3 /* CapGrab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8C02029302100ADFAD3 /* CapGrab.xcdatamodeld */; };
+		FF9EC8C42029302100ADFAD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8C32029302100ADFAD3 /* Assets.xcassets */; };
+		FF9EC8C72029302100ADFAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8C52029302100ADFAD3 /* LaunchScreen.storyboard */; };
+		FF9EC8D22029302100ADFAD3 /* CapGrabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8D12029302100ADFAD3 /* CapGrabTests.swift */; };
+		FF9EC8DD2029302100ADFAD3 /* CapGrabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8DC2029302100ADFAD3 /* CapGrabUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF9EC8CE2029302100ADFAD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF9EC8AE2029302100ADFAD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF9EC8B52029302100ADFAD3;
+			remoteInfo = CapGrab;
+		};
+		FF9EC8D92029302100ADFAD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF9EC8AE2029302100ADFAD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF9EC8B52029302100ADFAD3;
+			remoteInfo = CapGrab;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FF9EC8B62029302100ADFAD3 /* CapGrab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapGrab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF9EC8BB2029302100ADFAD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF9EC8BE2029302100ADFAD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF9EC8C12029302100ADFAD3 /* CapGrab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CapGrab.xcdatamodel; sourceTree = "<group>"; };
+		FF9EC8C32029302100ADFAD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF9EC8C62029302100ADFAD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FF9EC8C82029302100ADFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF9EC8CD2029302100ADFAD3 /* CapGrabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapGrabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9EC8D12029302100ADFAD3 /* CapGrabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapGrabTests.swift; sourceTree = "<group>"; };
+		FF9EC8D32029302100ADFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF9EC8D82029302100ADFAD3 /* CapGrabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapGrabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9EC8DC2029302100ADFAD3 /* CapGrabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapGrabUITests.swift; sourceTree = "<group>"; };
+		FF9EC8DE2029302100ADFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF9EC8B32029302100ADFAD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9EC8CA2029302100ADFAD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9EC8D52029302100ADFAD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF9EC8AD2029302100ADFAD3 = {
+			isa = PBXGroup;
+			children = (
+				FF9EC8B82029302100ADFAD3 /* CapGrab */,
+				FF9EC8D02029302100ADFAD3 /* CapGrabTests */,
+				FF9EC8DB2029302100ADFAD3 /* CapGrabUITests */,
+				FF9EC8B72029302100ADFAD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF9EC8B72029302100ADFAD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF9EC8B62029302100ADFAD3 /* CapGrab.app */,
+				FF9EC8CD2029302100ADFAD3 /* CapGrabTests.xctest */,
+				FF9EC8D82029302100ADFAD3 /* CapGrabUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF9EC8B82029302100ADFAD3 /* CapGrab */ = {
+			isa = PBXGroup;
+			children = (
+				FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */,
+				FF9EC8BB2029302100ADFAD3 /* ViewController.swift */,
+				FF9EC8BD2029302100ADFAD3 /* Main.storyboard */,
+				FF9EC8C32029302100ADFAD3 /* Assets.xcassets */,
+				FF9EC8C52029302100ADFAD3 /* LaunchScreen.storyboard */,
+				FF9EC8C82029302100ADFAD3 /* Info.plist */,
+				FF9EC8C02029302100ADFAD3 /* CapGrab.xcdatamodeld */,
+			);
+			path = CapGrab;
+			sourceTree = "<group>";
+		};
+		FF9EC8D02029302100ADFAD3 /* CapGrabTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF9EC8D12029302100ADFAD3 /* CapGrabTests.swift */,
+				FF9EC8D32029302100ADFAD3 /* Info.plist */,
+			);
+			path = CapGrabTests;
+			sourceTree = "<group>";
+		};
+		FF9EC8DB2029302100ADFAD3 /* CapGrabUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF9EC8DC2029302100ADFAD3 /* CapGrabUITests.swift */,
+				FF9EC8DE2029302100ADFAD3 /* Info.plist */,
+			);
+			path = CapGrabUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF9EC8B52029302100ADFAD3 /* CapGrab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF9EC8E12029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrab" */;
+			buildPhases = (
+				FF9EC8B22029302100ADFAD3 /* Sources */,
+				FF9EC8B32029302100ADFAD3 /* Frameworks */,
+				FF9EC8B42029302100ADFAD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CapGrab;
+			productName = CapGrab;
+			productReference = FF9EC8B62029302100ADFAD3 /* CapGrab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF9EC8CC2029302100ADFAD3 /* CapGrabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF9EC8E42029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrabTests" */;
+			buildPhases = (
+				FF9EC8C92029302100ADFAD3 /* Sources */,
+				FF9EC8CA2029302100ADFAD3 /* Frameworks */,
+				FF9EC8CB2029302100ADFAD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF9EC8CF2029302100ADFAD3 /* PBXTargetDependency */,
+			);
+			name = CapGrabTests;
+			productName = CapGrabTests;
+			productReference = FF9EC8CD2029302100ADFAD3 /* CapGrabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF9EC8D72029302100ADFAD3 /* CapGrabUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF9EC8E72029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrabUITests" */;
+			buildPhases = (
+				FF9EC8D42029302100ADFAD3 /* Sources */,
+				FF9EC8D52029302100ADFAD3 /* Frameworks */,
+				FF9EC8D62029302100ADFAD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF9EC8DA2029302100ADFAD3 /* PBXTargetDependency */,
+			);
+			name = CapGrabUITests;
+			productName = CapGrabUITests;
+			productReference = FF9EC8D82029302100ADFAD3 /* CapGrabUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF9EC8AE2029302100ADFAD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "George Sarantinos";
+				TargetAttributes = {
+					FF9EC8B52029302100ADFAD3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					FF9EC8CC2029302100ADFAD3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FF9EC8B52029302100ADFAD3;
+					};
+					FF9EC8D72029302100ADFAD3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FF9EC8B52029302100ADFAD3;
+					};
+				};
+			};
+			buildConfigurationList = FF9EC8B12029302100ADFAD3 /* Build configuration list for PBXProject "CapGrab" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF9EC8AD2029302100ADFAD3;
+			productRefGroup = FF9EC8B72029302100ADFAD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF9EC8B52029302100ADFAD3 /* CapGrab */,
+				FF9EC8CC2029302100ADFAD3 /* CapGrabTests */,
+				FF9EC8D72029302100ADFAD3 /* CapGrabUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF9EC8B42029302100ADFAD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9EC8C72029302100ADFAD3 /* LaunchScreen.storyboard in Resources */,
+				FF9EC8C42029302100ADFAD3 /* Assets.xcassets in Resources */,
+				FF9EC8BF2029302100ADFAD3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9EC8CB2029302100ADFAD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9EC8D62029302100ADFAD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF9EC8B22029302100ADFAD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */,
+				FF9EC8C22029302100ADFAD3 /* CapGrab.xcdatamodeld in Sources */,
+				FF9EC8BA2029302100ADFAD3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9EC8C92029302100ADFAD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9EC8D22029302100ADFAD3 /* CapGrabTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9EC8D42029302100ADFAD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9EC8DD2029302100ADFAD3 /* CapGrabUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF9EC8CF2029302100ADFAD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF9EC8B52029302100ADFAD3 /* CapGrab */;
+			targetProxy = FF9EC8CE2029302100ADFAD3 /* PBXContainerItemProxy */;
+		};
+		FF9EC8DA2029302100ADFAD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF9EC8B52029302100ADFAD3 /* CapGrab */;
+			targetProxy = FF9EC8D92029302100ADFAD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FF9EC8BD2029302100ADFAD3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF9EC8BE2029302100ADFAD3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FF9EC8C52029302100ADFAD3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF9EC8C62029302100ADFAD3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF9EC8DF2029302100ADFAD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF9EC8E02029302100ADFAD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF9EC8E22029302100ADFAD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRCBPUG82K;
+				INFOPLIST_FILE = CapGrab/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "George-Sarantinos.CapGrab";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF9EC8E32029302100ADFAD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRCBPUG82K;
+				INFOPLIST_FILE = CapGrab/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "George-Sarantinos.CapGrab";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FF9EC8E52029302100ADFAD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRCBPUG82K;
+				INFOPLIST_FILE = CapGrabTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "George-Sarantinos.CapGrabTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CapGrab.app/CapGrab";
+			};
+			name = Debug;
+		};
+		FF9EC8E62029302100ADFAD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRCBPUG82K;
+				INFOPLIST_FILE = CapGrabTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "George-Sarantinos.CapGrabTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CapGrab.app/CapGrab";
+			};
+			name = Release;
+		};
+		FF9EC8E82029302100ADFAD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRCBPUG82K;
+				INFOPLIST_FILE = CapGrabUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "George-Sarantinos.CapGrabUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CapGrab;
+			};
+			name = Debug;
+		};
+		FF9EC8E92029302100ADFAD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRCBPUG82K;
+				INFOPLIST_FILE = CapGrabUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "George-Sarantinos.CapGrabUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CapGrab;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF9EC8B12029302100ADFAD3 /* Build configuration list for PBXProject "CapGrab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9EC8DF2029302100ADFAD3 /* Debug */,
+				FF9EC8E02029302100ADFAD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF9EC8E12029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9EC8E22029302100ADFAD3 /* Debug */,
+				FF9EC8E32029302100ADFAD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF9EC8E42029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9EC8E52029302100ADFAD3 /* Debug */,
+				FF9EC8E62029302100ADFAD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF9EC8E72029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrabUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9EC8E82029302100ADFAD3 /* Debug */,
+				FF9EC8E92029302100ADFAD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF9EC8C02029302100ADFAD3 /* CapGrab.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF9EC8C12029302100ADFAD3 /* CapGrab.xcdatamodel */,
+			);
+			currentVersion = FF9EC8C12029302100ADFAD3 /* CapGrab.xcdatamodel */;
+			path = CapGrab.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FF9EC8AE2029302100ADFAD3 /* Project object */;
+}
