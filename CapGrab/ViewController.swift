@@ -7,11 +7,112 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var LoginOrSignUp: UISegmentedControl!
+    
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var userName: UITextField!
+    
+    @IBOutlet weak var EnterButton: UIButton!
+    @IBOutlet weak var selectPicture: UIButton!
+    
+    @IBOutlet weak var profilePicture: UIImageView!
+    
+    let imageLibrary = UIImagePickerController()
+    var userID = ""
+    
+    @IBAction func userNameVisibility(_ sender: Any) {
+        if LoginOrSignUp.selectedSegmentIndex == 0 {
+            userName.isHidden = true
+            profilePicture.isHidden = true
+            selectPicture.isHidden = true
+            EnterButton.frame.origin = CGPoint(x: 132, y: 446)
+        } else {
+            userName.isHidden = false
+            profilePicture.isHidden = false
+            selectPicture.isHidden = false
+            EnterButton.frame.origin = CGPoint(x: 132, y: 550)
+        }
+    }
+    
+    @IBAction func selectProfilePicture(_ sender: Any) {
+        self.present(imageLibrary, animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        profilePicture.image = image
+        dismiss(animated:true, completion: nil)
+    }
+    
+    @IBAction func loginOrSignUpAction(_ sender: Any) {
+        if LoginOrSignUp.selectedSegmentIndex == 0 {
+            if email.text == "" || password.text == "" {
+                let message = "You need to enter an email and password"
+                let alert = UIAlertController(title: "Uh Oh", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            Auth.auth().signIn(withEmail: email.text!, password: password.text!, completion: { (user, error) in
+                if error != nil{
+                    if let signinError = error?.localizedDescription {
+                        print(signinError)
+                        return
+                    }
+                }
+                self.userID = (user?.uid)!
+                self.performSegue(withIdentifier:"loginSegue",sender: self)
+            })
+        } else {
+            Auth.auth().createUser(withEmail: email.text!, password: password.text!, completion: { (user, error) in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                self.userID = (user?.uid)!
+                let storage = Storage.storage()
+                let storageRef = storage.reference(forURL: "gs://capgrab-d673e.appspot.com").child("profilePicutres").child((user?.uid)!)
+                let currentProfilePicture = self.profilePicture.image
+                let pictureData = UIImageJPEGRepresentation(currentProfilePicture!, 0.1)
+                storageRef.putData(pictureData!, metadata: nil, completion: { (metadata, error) in
+                    if error != nil {
+                        return
+                    }
+                    let profilePictureURL = metadata?.downloadURL()?.absoluteString
+                    let ref: DatabaseReference!
+                    ref = Database.database().reference()
+                    let followers: NSArray = []
+                    let following: NSArray = []
+                    ref.child("users").child((user?.uid)!).setValue(["userName": self.userName.text!, "email": self.email.text!, "capScore": 0, "fullName": "", "profilePicture": profilePictureURL!, "photos": [], "followers": followers, "following": following])
+                })
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userName.isHidden = true
+        profilePicture.isHidden = true
+        profilePicture.image = UIImage(named: "images")
+        profilePicture.layer.cornerRadius = 40.0
+        profilePicture.clipsToBounds = true
+        selectPicture.isHidden = true
+        email.placeholder = "Email"
+        password.placeholder = "Password"
+        userName.placeholder = "Username"
+        EnterButton.layer.cornerRadius = 5
+        
+        imageLibrary.delegate = self
+        imageLibrary.sourceType = .photoLibrary
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +120,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let userAccountVC = segue.destination as! UITabBarController
+        let userAccountVC2 = userAccountVC.viewControllers![0] as! UserAccountViewController
+        userAccountVC2.userID2 = self.userID
+    }
 }
 

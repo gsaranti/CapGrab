@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D059A58D7148C85F9A1DED5 /* Pods_CapGrabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F03A826B0C3B272DD58D212 /* Pods_CapGrabTests.framework */; };
+		848AFD587E176611A291297E /* Pods_CapGrabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665FB5A6A8201C28AA9B3BFC /* Pods_CapGrabUITests.framework */; };
+		C5866BF9F6D9DC0A26892ECC /* Pods_CapGrab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC0FBBA6BBCA5735E06BB1F /* Pods_CapGrab.framework */; };
 		FF9EC8BA2029302100ADFAD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */; };
 		FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8BB2029302100ADFAD3 /* ViewController.swift */; };
 		FF9EC8BF2029302100ADFAD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8BD2029302100ADFAD3 /* Main.storyboard */; };
@@ -15,6 +18,8 @@
 		FF9EC8C72029302100ADFAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8C52029302100ADFAD3 /* LaunchScreen.storyboard */; };
 		FF9EC8D22029302100ADFAD3 /* CapGrabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8D12029302100ADFAD3 /* CapGrabTests.swift */; };
 		FF9EC8DD2029302100ADFAD3 /* CapGrabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8DC2029302100ADFAD3 /* CapGrabUITests.swift */; };
+		FF9EC8EB2034ED6600ADFAD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8EA2034ED6500ADFAD3 /* GoogleService-Info.plist */; };
+		FFC5FB22203B717200476CD4 /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D82D975B46A95534ED583CB /* Pods-CapGrab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrab.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab.release.xcconfig"; sourceTree = "<group>"; };
+		4CC0FBBA6BBCA5735E06BB1F /* Pods_CapGrab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapGrab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F03A826B0C3B272DD58D212 /* Pods_CapGrabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapGrabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		665FB5A6A8201C28AA9B3BFC /* Pods_CapGrabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapGrabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F0C3693A74190BB067EF15 /* Pods-CapGrabTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabTests/Pods-CapGrabTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B9768A52AF3138F84A171E48 /* Pods-CapGrabUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabUITests/Pods-CapGrabUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2849FE3FD966490A0D01E73 /* Pods-CapGrab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab.debug.xcconfig"; sourceTree = "<group>"; };
+		CAAF498E3CDA5CDB35F6AEB6 /* Pods-CapGrabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabTests/Pods-CapGrabTests.release.xcconfig"; sourceTree = "<group>"; };
+		EF989F42623A059B446A7901 /* Pods-CapGrabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabUITests/Pods-CapGrabUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FF9EC8B62029302100ADFAD3 /* CapGrab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapGrab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF9EC8BB2029302100ADFAD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +63,8 @@
 		FF9EC8D82029302100ADFAD3 /* CapGrabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapGrabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9EC8DC2029302100ADFAD3 /* CapGrabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapGrabUITests.swift; sourceTree = "<group>"; };
 		FF9EC8DE2029302100ADFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF9EC8EA2034ED6500ADFAD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5866BF9F6D9DC0A26892ECC /* Pods_CapGrab.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D059A58D7148C85F9A1DED5 /* Pods_CapGrabTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848AFD587E176611A291297E /* Pods_CapGrabUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C03FDA7790A8970F79A6EC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2849FE3FD966490A0D01E73 /* Pods-CapGrab.debug.xcconfig */,
+				2D82D975B46A95534ED583CB /* Pods-CapGrab.release.xcconfig */,
+				A7F0C3693A74190BB067EF15 /* Pods-CapGrabTests.debug.xcconfig */,
+				CAAF498E3CDA5CDB35F6AEB6 /* Pods-CapGrabTests.release.xcconfig */,
+				B9768A52AF3138F84A171E48 /* Pods-CapGrabUITests.debug.xcconfig */,
+				EF989F42623A059B446A7901 /* Pods-CapGrabUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		815F589416A18A4599B2EE0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CC0FBBA6BBCA5735E06BB1F /* Pods_CapGrab.framework */,
+				4F03A826B0C3B272DD58D212 /* Pods_CapGrabTests.framework */,
+				665FB5A6A8201C28AA9B3BFC /* Pods_CapGrabUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF9EC8AD2029302100ADFAD3 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +125,8 @@
 				FF9EC8D02029302100ADFAD3 /* CapGrabTests */,
 				FF9EC8DB2029302100ADFAD3 /* CapGrabUITests */,
 				FF9EC8B72029302100ADFAD3 /* Products */,
+				1C03FDA7790A8970F79A6EC1 /* Pods */,
+				815F589416A18A4599B2EE0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +145,12 @@
 			children = (
 				FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */,
 				FF9EC8BB2029302100ADFAD3 /* ViewController.swift */,
+				FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */,
 				FF9EC8BD2029302100ADFAD3 /* Main.storyboard */,
 				FF9EC8C32029302100ADFAD3 /* Assets.xcassets */,
 				FF9EC8C52029302100ADFAD3 /* LaunchScreen.storyboard */,
 				FF9EC8C82029302100ADFAD3 /* Info.plist */,
+				FF9EC8EA2034ED6500ADFAD3 /* GoogleService-Info.plist */,
 				FF9EC8C02029302100ADFAD3 /* CapGrab.xcdatamodeld */,
 			);
 			path = CapGrab;
@@ -135,9 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF9EC8E12029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrab" */;
 			buildPhases = (
+				5AF26743322174264C1CC757 /* [CP] Check Pods Manifest.lock */,
 				FF9EC8B22029302100ADFAD3 /* Sources */,
 				FF9EC8B32029302100ADFAD3 /* Frameworks */,
 				FF9EC8B42029302100ADFAD3 /* Resources */,
+				CC66C83EECCF26EA09F8E08A /* [CP] Embed Pods Frameworks */,
+				E03F2FF5D12381E68EE4537E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF9EC8E42029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrabTests" */;
 			buildPhases = (
+				D88F159E7A5595DBC104B0B9 /* [CP] Check Pods Manifest.lock */,
 				FF9EC8C92029302100ADFAD3 /* Sources */,
 				FF9EC8CA2029302100ADFAD3 /* Frameworks */,
 				FF9EC8CB2029302100ADFAD3 /* Resources */,
+				BEFAE82E4D25D90816B6327A /* [CP] Embed Pods Frameworks */,
+				6E463A670BD6FF6B03616A0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF9EC8E72029302100ADFAD3 /* Build configuration list for PBXNativeTarget "CapGrabUITests" */;
 			buildPhases = (
+				36DCDB3D6A4333A210BAED4E /* [CP] Check Pods Manifest.lock */,
 				FF9EC8D42029302100ADFAD3 /* Sources */,
 				FF9EC8D52029302100ADFAD3 /* Frameworks */,
 				FF9EC8D62029302100ADFAD3 /* Resources */,
+				9B9300D4CC08B2708BDBBCCE /* [CP] Embed Pods Frameworks */,
+				4FE89D7AC7E4B7D2D7682D46 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9EC8C72029302100ADFAD3 /* LaunchScreen.storyboard in Resources */,
+				FF9EC8EB2034ED6600ADFAD3 /* GoogleService-Info.plist in Resources */,
 				FF9EC8C42029302100ADFAD3 /* Assets.xcassets in Resources */,
 				FF9EC8BF2029302100ADFAD3 /* Main.storyboard in Resources */,
 			);
@@ -257,12 +313,169 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36DCDB3D6A4333A210BAED4E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CapGrabUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FE89D7AC7E4B7D2D7682D46 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CapGrabUITests/Pods-CapGrabUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AF26743322174264C1CC757 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CapGrab-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E463A670BD6FF6B03616A0A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CapGrabTests/Pods-CapGrabTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B9300D4CC08B2708BDBBCCE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CapGrabUITests/Pods-CapGrabUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEFAE82E4D25D90816B6327A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CapGrabTests/Pods-CapGrabTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC66C83EECCF26EA09F8E08A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D88F159E7A5595DBC104B0B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CapGrabTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E03F2FF5D12381E68EE4537E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF9EC8B22029302100ADFAD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */,
+				FFC5FB22203B717200476CD4 /* UserAccountViewController.swift in Sources */,
 				FF9EC8C22029302100ADFAD3 /* CapGrab.xcdatamodeld in Sources */,
 				FF9EC8BA2029302100ADFAD3 /* AppDelegate.swift in Sources */,
 			);
@@ -428,6 +641,7 @@
 		};
 		FF9EC8E22029302100ADFAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2849FE3FD966490A0D01E73 /* Pods-CapGrab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +657,7 @@
 		};
 		FF9EC8E32029302100ADFAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D82D975B46A95534ED583CB /* Pods-CapGrab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +673,7 @@
 		};
 		FF9EC8E52029302100ADFAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7F0C3693A74190BB067EF15 /* Pods-CapGrabTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +691,7 @@
 		};
 		FF9EC8E62029302100ADFAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAAF498E3CDA5CDB35F6AEB6 /* Pods-CapGrabTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -492,6 +709,7 @@
 		};
 		FF9EC8E82029302100ADFAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9768A52AF3138F84A171E48 /* Pods-CapGrabUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +726,7 @@
 		};
 		FF9EC8E92029302100ADFAD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF989F42623A059B446A7901 /* Pods-CapGrabUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
