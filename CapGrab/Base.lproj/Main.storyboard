@@ -121,7 +121,7 @@
         <!--Notifications-->
         <scene sceneID="HDV-mA-4cB">
             <objects>
-                <viewController id="YEw-RI-R6I" sceneMemberID="viewController">
+                <viewController id="YEw-RI-R6I" customClass="NotificationViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lTb-ow-jbN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
         <!--Upload-->
         <scene sceneID="1KI-sO-o4Q">
             <objects>
-                <viewController id="ye6-cw-VHf" sceneMemberID="viewController">
+                <viewController id="ye6-cw-VHf" customClass="UploadViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jQw-We-Oid">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +171,7 @@
         <!--Search-->
         <scene sceneID="ufC-xf-1Kb">
             <objects>
-                <viewController id="4F1-Ep-Jy8" sceneMemberID="viewController">
+                <viewController id="4F1-Ep-Jy8" customClass="UserSearchViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eP7-Xu-ez6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,7 +196,7 @@
         <!--Forum-->
         <scene sceneID="oxk-Jz-hUV">
             <objects>
-                <viewController id="4My-rb-0sL" sceneMemberID="viewController">
+                <viewController id="4My-rb-0sL" customClass="ForumViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WNK-Tr-RUa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
