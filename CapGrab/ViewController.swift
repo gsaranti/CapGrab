@@ -4,6 +4,9 @@
 //
 //  Created by George Sarantinos on 2/5/18.
 //  Copyright © 2018 George Sarantinos. All rights reserved.
+//  https://firebase.google.com/docs/database/ios/read-and-write
+//  https://firebase.google.com/docs/storage/ios/create-reference
+//  https://www.youtube.com/watch?v=OEUeGuBnNAs&t=0s
 //
 
 import UIKit
@@ -25,7 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var profilePicture: UIImageView!
     
     let imageLibrary = UIImagePickerController()
-    var userID = ""
     
     @IBAction func userNameVisibility(_ sender: Any) {
         if LoginOrSignUp.selectedSegmentIndex == 0 {
@@ -44,11 +46,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func selectProfilePicture(_ sender: Any) {
         self.present(imageLibrary, animated: true, completion: nil)
     }
-    
+
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         profilePicture.image = image
-        dismiss(animated:true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func loginOrSignUpAction(_ sender: Any) {
@@ -68,7 +70,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         return
                     }
                 }
-                self.userID = (user?.uid)!
                 self.performSegue(withIdentifier:"loginSegue",sender: self)
             })
         } else {
@@ -77,7 +78,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     print(error?.localizedDescription as Any)
                     return
                 }
-                self.userID = (user?.uid)!
                 let storage = Storage.storage()
                 let storageRef = storage.reference(forURL: "gs://capgrab-d673e.appspot.com").child("profilePicutres").child((user?.uid)!)
                 let currentProfilePicture = self.profilePicture.image
@@ -89,11 +89,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     let profilePictureURL = metadata?.downloadURL()?.absoluteString
                     let ref: DatabaseReference!
                     ref = Database.database().reference()
-                    let followers: NSArray = []
-                    let following: NSArray = []
-                    ref.child("users").child((user?.uid)!).setValue(["userName": self.userName.text!, "email": self.email.text!, "capScore": 0, "fullName": "", "profilePicture": profilePictureURL!, "photos": [], "followers": followers, "following": following])
+                    let followers = [String]()
+                    let following = [String]()
+                    let photoPaths = [String]()
+                    ref.child("users").child((user?.uid)!).setValue(["userName": self.userName.text!, "email": self.email.text!, "capScore": 0, "fullName": "", "profilePicture": profilePictureURL!, "photos": photoPaths, "followers": followers, "following": following])
                 })
             })
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
     
@@ -121,10 +123,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let userAccountVC = segue.destination as! UITabBarController
-        let userAccountVC2 = userAccountVC.viewControllers![0] as! UserAccountViewController
-        userAccountVC2.userID2 = self.userID
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//    }
 }
 

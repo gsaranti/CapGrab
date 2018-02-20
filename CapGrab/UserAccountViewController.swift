@@ -10,8 +10,11 @@ import UIKit
 
 class UserAccountViewController: UIViewController {
     
-    var userID2 = String()
-
+    var userID = String()
+    
+    @IBOutlet weak var imageCollection: UICollectionView!
+    @IBOutlet weak var profilePicture: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

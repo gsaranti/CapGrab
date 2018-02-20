@@ -101,22 +101,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Account" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zM4-TM-eiO">
-                                <rect key="frame" x="140" y="241" width="95" height="36"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ucv-5A-oXW">
+                                <rect key="frame" x="0.0" y="269" width="375" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="backgroundColor" red="0.4468514908412351" green="0.56983263753926927" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FGL-3s-o55">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7dn-Bk-yHh">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBM-L8-wOG">
+                                <rect key="frame" x="16" y="20" width="73" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="0ZF-h0-nIL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="mz2-VW-FNh"/>
+                    <connections>
+                        <outlet property="imageCollection" destination="Ucv-5A-oXW" id="OO7-eX-hHb"/>
+                        <outlet property="profilePicture" destination="RBM-L8-wOG" id="RRj-uX-BIr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5w-mz-h6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="908"/>
+            <point key="canvasLocation" x="970.39999999999998" y="907.1964017991005"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="HDV-mA-4cB">
@@ -151,22 +173,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Upload" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k7Z-U1-kj4">
-                                <rect key="frame" x="140" y="271" width="95" height="36"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-jt-1kB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="477"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-EO-bvh">
+                                <rect key="frame" x="114" y="499" width="147" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Browse Photo Library"/>
+                                <connections>
+                                    <action selector="browsePhotoLibrary:" destination="ye6-cw-VHf" eventType="touchUpInside" id="P6b-Ib-zFL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYp-jj-a2x">
+                                <rect key="frame" x="162" y="553" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadImage:" destination="ye6-cw-VHf" eventType="touchUpInside" id="WtM-69-dFQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="I08-U4-xkJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" id="BZs-Yy-Dft"/>
+                    <connections>
+                        <outlet property="browseButton" destination="UPp-EO-bvh" id="WQp-ZJ-Vpc"/>
+                        <outlet property="uploadButton" destination="bYp-jj-a2x" id="Hyf-Ez-VOi"/>
+                        <outlet property="uploadImage" destination="d0H-jt-1kB" id="meo-Xd-S3A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbg-LD-OMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2679" y="365"/>
+            <point key="canvasLocation" x="2677.5999999999999" y="364.7676161919041"/>
         </scene>
         <!--Search-->
         <scene sceneID="ufC-xf-1Kb">
