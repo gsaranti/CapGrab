@@ -20,6 +20,7 @@
 		FF9EC8DD2029302100ADFAD3 /* CapGrabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8DC2029302100ADFAD3 /* CapGrabUITests.swift */; };
 		FF9EC8EB2034ED6600ADFAD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8EA2034ED6500ADFAD3 /* GoogleService-Info.plist */; };
 		FFC5FB22203B717200476CD4 /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */; };
+		FFC8D40A203F74C90072F936 /* UserImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D409203F74C90072F936 /* UserImageViewController.swift */; };
 		FFDE69C9203B94340096D45D /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE69C8203B94340096D45D /* UserSearchViewController.swift */; };
 		FFDE69CB203B94590096D45D /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE69CA203B94590096D45D /* UploadViewController.swift */; };
 		FFDE69CD203B947D0096D45D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE69CC203B947D0096D45D /* NotificationViewController.swift */; };
@@ -69,6 +70,7 @@
 		FF9EC8DE2029302100ADFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF9EC8EA2034ED6500ADFAD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
+		FFC8D409203F74C90072F936 /* UserImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageViewController.swift; sourceTree = "<group>"; };
 		FFDE69C8203B94340096D45D /* UserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		FFDE69CA203B94590096D45D /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		FFDE69CC203B947D0096D45D /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				FF9EC8BB2029302100ADFAD3 /* ViewController.swift */,
 				FFDE69CA203B94590096D45D /* UploadViewController.swift */,
 				FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */,
+				FFC8D409203F74C90072F936 /* UserImageViewController.swift */,
 				FFDE69C8203B94340096D45D /* UserSearchViewController.swift */,
 				FFDE69CC203B947D0096D45D /* NotificationViewController.swift */,
 				FFDE69CE203B94AE0096D45D /* ForumViewController.swift */,
@@ -488,6 +491,7 @@
 			files = (
 				FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */,
 				FFDE69CB203B94590096D45D /* UploadViewController.swift in Sources */,
+				FFC8D40A203F74C90072F936 /* UserImageViewController.swift in Sources */,
 				FFC5FB22203B717200476CD4 /* UserAccountViewController.swift in Sources */,
 				FFDE69CD203B947D0096D45D /* NotificationViewController.swift in Sources */,
 				FFDE69CF203B94AE0096D45D /* ForumViewController.swift in Sources */,
