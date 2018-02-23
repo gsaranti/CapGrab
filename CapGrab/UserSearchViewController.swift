@@ -9,29 +9,48 @@
 import UIKit
 import FirebaseDatabase
 
-class UserSearchViewController: UIViewController {
-    
+class UserSearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+        
     var returnedUsers = [Array<Any>]()
     @IBOutlet weak var usersTable: UITableView!
     @IBOutlet weak var userSearch: UISearchBar!
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return returnedUsers.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! ReturnedUserTableViewCell
+        cell.userName.text = returnedUsers[indexPath.item][1] as? String
+        return cell
+    }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        returnedUsers.removeAll(keepingCapacity: true)
+        let userNameSearch = userSearch.text
         let ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
             let value = snapshot.value as? NSDictionary
             for users in value! {
                 let userNames = users.value as? NSDictionary
-                let returnedUserName = userNames!["userName"]!
-                let userID = users.key
-                self.returnedUsers.append([userID, returnedUserName as! String])
+                let returnedUserName = userNames!["userName"]! as! String
+                if userNameSearch == returnedUserName {
+                    let userID = users.key
+                    self.returnedUsers.append([userID, returnedUserName])
+                }
             }
+            self.usersTable.reloadData()
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.userSearch.delegate = self
+        self.usersTable.delegate = self
+        self.usersTable.rowHeight = 40
+        
     }
 
     override func didReceiveMemoryWarning() {
