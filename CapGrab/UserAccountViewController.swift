@@ -19,6 +19,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var imageArray = [UIImage]()
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var imageCollection: UICollectionView!
+    @IBOutlet weak var userName: UITextView!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -33,12 +34,16 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profilePicture.layer.cornerRadius = 32.0
+        profilePicture.clipsToBounds = true
+        
         let storage = Storage.storage()
         let ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
+            self.userName.text = (value?["userName"] as! String)
             self.imagePaths = (value?["photos"] as! [String])
             for path in self.imagePaths {
                 let httpsReference = storage.reference(forURL: path)
@@ -52,6 +57,16 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     }
                 })
             }
+            let profilePicturePath = (value?["profilePicture"] as! String)
+            let profilePictureImage = storage.reference(forURL: profilePicturePath)
+            profilePictureImage.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    self.profilePicture.image = UIImage(data: data!)
+                }
+            })
+            
         }){ (error) in
             print(error.localizedDescription)
         }
