@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class UserSearchViewController: UIViewController {
-
+    
+    var returnedUsers = [Array<Any>]()
+    @IBOutlet weak var usersTable: UITableView!
+    @IBOutlet weak var userSearch: UISearchBar!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            for users in value! {
+                let userNames = users.value as? NSDictionary
+                let returnedUserName = userNames!["userName"]!
+                let userID = users.key
+                self.returnedUsers.append([userID, returnedUserName as! String])
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
