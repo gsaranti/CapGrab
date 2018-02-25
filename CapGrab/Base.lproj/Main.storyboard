@@ -239,6 +239,38 @@
             </objects>
             <point key="canvasLocation" x="2677.5999999999999" y="364.7676161919041"/>
         </scene>
+        <!--Seached User Account View Controller-->
+        <scene sceneID="AUD-8Z-PeU">
+            <objects>
+                <viewController id="fkP-xm-AOU" customClass="SeachedUserAccountViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LNP-cU-8sU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yH-BU-zVI">
+                                <rect key="frame" x="16" y="55" width="73" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qZ-CE-rJl">
+                                <rect key="frame" x="16" y="138" width="109" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="yb1-kM-fE7"/>
+                    </view>
+                    <connections>
+                        <outlet property="profilePicture" destination="5yH-BU-zVI" id="VDc-ga-35O"/>
+                        <outlet property="userName" destination="5qZ-CE-rJl" id="Cbs-Np-RjE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPu-wo-R34" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3640.8000000000002" y="-341.37931034482762"/>
+        </scene>
         <!--Search-->
         <scene sceneID="ufC-xf-1Kb">
             <objects>
@@ -290,6 +322,7 @@
                     <connections>
                         <outlet property="userSearch" destination="Uuf-31-aA0" id="XLJ-Hg-I7d"/>
                         <outlet property="usersTable" destination="IcJ-Ob-28C" id="H6u-iE-T8X"/>
+                        <segue destination="fkP-xm-AOU" kind="show" identifier="searchSegue" id="zfq-cN-exs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewF-1n-Ms4" userLabel="First Responder" sceneMemberID="firstResponder"/>

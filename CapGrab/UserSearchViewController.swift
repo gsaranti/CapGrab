@@ -14,6 +14,7 @@ class UserSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
     var returnedUsers = [Array<Any>]()
     @IBOutlet weak var usersTable: UITableView!
     @IBOutlet weak var userSearch: UISearchBar!
+    var userIDtoSend = String()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return returnedUsers.count
@@ -22,7 +23,13 @@ class UserSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! ReturnedUserTableViewCell
         cell.userName.text = returnedUsers[indexPath.item][1] as? String
+        cell.userID = (returnedUsers[indexPath.item][0] as? String)!
+        userIDtoSend = cell.userID
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -58,15 +65,10 @@ class UserSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        let destination = segue.destination as! SeachedUserAccountViewController
+        destination.userID = userIDtoSend
     }
-    */
 
 }

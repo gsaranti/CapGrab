@@ -11,6 +11,7 @@ import UIKit
 class ReturnedUserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userName: UILabel!
+    var userID = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
