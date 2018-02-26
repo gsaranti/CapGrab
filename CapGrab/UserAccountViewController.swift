@@ -17,6 +17,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     var imagePaths = [String]()
     var imageArray = [UIImage]()
+    var followers = [String]()
+    var following = [String]()
+
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var userName: UITextView!

@@ -18,9 +18,56 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     var searchedUserID = String()
     var imagePaths = [String]()
     var imageArray = [UIImage]()
+    var followersArray = [String]()
+    var followingArray = [String]()
+    var followRequests = [String]()
+    
+    var isFollower = false
+    var hasRequested = false
+    
+    let currentUserID = Auth.auth().currentUser?.uid
+
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImagesCollection: UICollectionView!
+    
+    @IBOutlet weak var followButton: UIButton!
+    
+    @IBAction func userRelationAction(_ sender: Any) {
+        if(isFollower == true) {
+            let index = followersArray.index(of: currentUserID!)
+            followersArray.remove(at: index!)
+            let ref: DatabaseReference!
+            ref = Database.database().reference()
+            ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref.child("users/\(self.searchedUserID)/followersArray").setValue(self.followersArray)
+            }){ (error) in
+                print(error.localizedDescription)
+            }
+            reloadPage()
+        } else if(hasRequested == true) {
+            let index = followRequests.index(of: currentUserID!)
+            followRequests.remove(at: index!)
+            let ref: DatabaseReference!
+            ref = Database.database().reference()
+            ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref.child("users/\(self.searchedUserID)/followRequests").setValue(self.followRequests)
+            }){ (error) in
+                print(error.localizedDescription)
+            }
+            reloadPage()
+        } else {
+            let ref: DatabaseReference!
+            ref = Database.database().reference()
+            followRequests.append(currentUserID!)
+            ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref.child("users/\(self.searchedUserID)/followRequests").setValue(self.followRequests)
+            }){ (error) in
+                print(error.localizedDescription)
+            }
+            reloadPage()
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -36,34 +83,49 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         performSegue(withIdentifier: "backToSearchSegue", sender: self)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        profilePicture.layer.cornerRadius = 32.0
-        profilePicture.clipsToBounds = true
-        
-        print(searchedUserID)
-        
+    func reloadPage() {
         let storage = Storage.storage()
         let ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
-            if (value?["photos"] as? [String]) != nil {
-                self.imagePaths = (value?["photos"] as? [String])!
+            if (value?["followers"] as? [String]) != nil {
+                self.followersArray = (value?["photos"] as? [String])!
             }
-            for path in self.imagePaths {
-                let httpsReference = storage.reference(forURL: path)
-                httpsReference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        let currentImage = UIImage(data: data!)
-                        self.imageArray.append(currentImage!)
-                        self.userImagesCollection.reloadData()
-                    }
-                })
+            if (value?["following"] as? [String]) != nil {
+                self.followingArray = (value?["following"] as? [String])!
+            }
+            if (value?["followRequests"] as? [String]) != nil {
+                self.followRequests = (value?["followRequests"] as? [String])!
+            }
+            if(self.followersArray.contains(self.currentUserID!)) {
+                self.isFollower = true
+                self.followButton.setTitle("Unfollow", for: [])
+            } else if(self.followRequests.contains(self.currentUserID!)) {
+                self.isFollower = false
+                self.hasRequested = true
+                self.followButton.setTitle("Pending", for: [])
+            } else {
+                self.isFollower = false
+                self.followButton.setTitle("Follow", for: [])
+            }
+            if(self.isFollower == true) {
+                if (value?["photos"] as? [String]) != nil {
+                    self.imagePaths = (value?["photos"] as? [String])!
+                }
+                for path in self.imagePaths {
+                    let httpsReference = storage.reference(forURL: path)
+                    httpsReference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            let currentImage = UIImage(data: data!)
+                            self.imageArray.append(currentImage!)
+                            self.userImagesCollection.reloadData()
+                        }
+                    })
+                }
             }
             let profilePicturePath = (value?["profilePicture"] as! String)
             let profilePictureImage = storage.reference(forURL: profilePicturePath)
@@ -78,6 +140,15 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         }){ (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        profilePicture.layer.cornerRadius = 32.0
+        profilePicture.clipsToBounds = true
+        
+        reloadPage()
 
         // Do any additional setup after loading the view.
     }

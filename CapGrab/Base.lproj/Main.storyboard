@@ -312,11 +312,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Following"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7c4-mD-3Dq">
+                                <rect key="frame" x="181" y="108" width="104" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="userRelationAction:" destination="fkP-xm-AOU" eventType="touchUpInside" id="17y-jV-jAo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="yb1-kM-fE7"/>
                     </view>
                     <connections>
+                        <outlet property="followButton" destination="7c4-mD-3Dq" id="Hng-rL-2Fe"/>
                         <outlet property="profilePicture" destination="5yH-BU-zVI" id="VDc-ga-35O"/>
                         <outlet property="userImagesCollection" destination="VKf-fm-azd" id="iBO-4A-8Ir"/>
                         <outlet property="userName" destination="5qZ-CE-rJl" id="Cbs-Np-RjE"/>
