@@ -13,18 +13,28 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class SeachedUserAccountViewController: UIViewController {
+class SeachedUserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var userID = String()
+    var searchedUserID = String()
     var imagePaths = [String]()
     var imageArray = [UIImage]()
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userImagesCollection: UICollectionView!
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell2", for: indexPath) as! SearchedUserImagesCollectionViewCell
+        cell.userImage.image = imageArray[indexPath.item]
+        return cell
+    }
     
     @IBAction func backToSearch(_ sender: Any) {
         performSegue(withIdentifier: "backToSearchSegue", sender: self)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +42,12 @@ class SeachedUserAccountViewController: UIViewController {
         profilePicture.layer.cornerRadius = 32.0
         profilePicture.clipsToBounds = true
         
+        print(searchedUserID)
+        
         let storage = Storage.storage()
         let ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
             if (value?["photos"] as? [String]) != nil {
@@ -49,7 +61,7 @@ class SeachedUserAccountViewController: UIViewController {
                     } else {
                         let currentImage = UIImage(data: data!)
                         self.imageArray.append(currentImage!)
-                        //self.imageCollection.reloadData()
+                        self.userImagesCollection.reloadData()
                     }
                 })
             }

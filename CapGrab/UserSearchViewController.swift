@@ -67,7 +67,6 @@ class UserSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! SeachedUserAccountViewController
-        destination.userID = userIDtoSend
+        destination.searchedUserID = userIDtoSend
     }
-
 }
