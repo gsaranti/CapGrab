@@ -44,7 +44,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
-            self.imagePaths = (value?["photos"] as! [String])
+            if (value?["photos"] as? [String]) != nil {
+                self.imagePaths = (value?["photos"] as? [String])!
+            }
             for path in self.imagePaths {
                 let httpsReference = storage.reference(forURL: path)
                 httpsReference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in

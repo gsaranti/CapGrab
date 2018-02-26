@@ -4,7 +4,7 @@
 //
 //  Created by George Sarantinos on 2/19/18.
 //  Copyright © 2018 George Sarantinos. All rights reserved.
-//
+
 
 import UIKit
 import FirebaseDatabase
@@ -66,7 +66,6 @@ class UserSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let destination = segue.destination as! SeachedUserAccountViewController
         destination.userID = userIDtoSend
     }

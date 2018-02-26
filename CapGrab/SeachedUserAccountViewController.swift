@@ -5,6 +5,8 @@
 //  Created by George Sarantinos on 2/24/18.
 //  Copyright © 2018 George Sarantinos. All rights reserved.
 //
+//  https://stackoverflow.com/questions/33873630/swift-how-do-i-segue-with-a-button-from-viewcontroller-to-a-specific-tabbarcon
+//
 
 import UIKit
 import FirebaseAuth
@@ -18,6 +20,11 @@ class SeachedUserAccountViewController: UIViewController {
     var imageArray = [UIImage]()
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    
+    @IBAction func backToSearch(_ sender: Any) {
+        performSegue(withIdentifier: "backToSearchSegue", sender: self)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,14 +76,10 @@ class SeachedUserAccountViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination as! UITabBarController
+        destination.selectedIndex = 1
     }
-    */
 
 }

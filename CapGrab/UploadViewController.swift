@@ -31,27 +31,33 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func uploadImage(_ sender: Any) {
-        let userID = Auth.auth().currentUser?.uid
-        let storage = Storage.storage()
-        let storageRef = storage.reference(forURL: "gs://capgrab-d673e.appspot.com").child(userID!)
-        let imageToUpload = uploadImage.image
-        let imageData = UIImageJPEGRepresentation(imageToUpload!, 0.1)
-        storageRef.putData(imageData!, metadata: nil) { (metadata, error) in
-            guard metadata != nil else {
-                print(error?.localizedDescription as Any)
-                return
+        if uploadImage.image != nil {
+            let userID = Auth.auth().currentUser?.uid
+            let storage = Storage.storage()
+            let imageName = String(NSDate().timeIntervalSince1970)
+            let storageRef = storage.reference(forURL: "gs://capgrab-d673e.appspot.com").child(userID!).child(imageName)
+            let imageToUpload = uploadImage.image
+            let imageData = UIImageJPEGRepresentation(imageToUpload!, 0.1)
+            storageRef.putData(imageData!, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                let ref: DatabaseReference!
+                ref = Database.database().reference()
+                ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    if (value?["photos"] as? [String]) != nil {
+                        self.imagePathArray = (value?["photos"] as? [String])!
+                    }
+                    let uploadedImageURL = metadata?.downloadURL()?.absoluteString
+                    self.imagePathArray.append(uploadedImageURL!)
+                    ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
+                }){ (error) in
+                    print(error.localizedDescription)
+                }
             }
-            let ref: DatabaseReference!
-            ref = Database.database().reference()
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                self.imagePathArray = (value?["photos"] as! [String])
-            }){ (error) in
-                print(error.localizedDescription)
-            }
-            let uploadedImageURL = metadata?.downloadURL()?.absoluteString
-            self.imagePathArray.append(uploadedImageURL!)
-            ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
+            performSegue(withIdentifier: "postUploadSegue", sender: self)
         }
     }
     

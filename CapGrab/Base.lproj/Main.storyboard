@@ -233,6 +233,7 @@
                         <outlet property="browseButton" destination="UPp-EO-bvh" id="WQp-ZJ-Vpc"/>
                         <outlet property="uploadButton" destination="bYp-jj-a2x" id="Hyf-Ez-VOi"/>
                         <outlet property="uploadImage" destination="d0H-jt-1kB" id="meo-Xd-S3A"/>
+                        <segue destination="mM3-zV-DD2" kind="show" identifier="postUploadSegue" id="dx3-fE-rgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbg-LD-OMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,16 +249,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yH-BU-zVI">
-                                <rect key="frame" x="16" y="55" width="73" height="64"/>
+                                <rect key="frame" x="16" y="94" width="73" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qZ-CE-rJl">
-                                <rect key="frame" x="16" y="138" width="109" height="34"/>
+                                <rect key="frame" x="16" y="166" width="109" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCK-ky-oFR">
+                                <rect key="frame" x="16" y="45" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backToSearch:" destination="fkP-xm-AOU" eventType="touchUpInside" id="nao-6j-h2K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="yb1-kM-fE7"/>
@@ -265,6 +275,7 @@
                     <connections>
                         <outlet property="profilePicture" destination="5yH-BU-zVI" id="VDc-ga-35O"/>
                         <outlet property="userName" destination="5qZ-CE-rJl" id="Cbs-Np-RjE"/>
+                        <segue destination="mM3-zV-DD2" kind="show" identifier="backToSearchSegue" id="Shq-bn-os3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPu-wo-R34" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,4 +387,7 @@
             <point key="canvasLocation" x="1118" y="134"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Shq-bn-os3"/>
+    </inferredMetricsTieBreakers>
 </document>
