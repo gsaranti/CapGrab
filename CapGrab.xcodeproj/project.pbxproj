@@ -24,6 +24,7 @@
 		FFC8D4172040A8BB0072F936 /* ReturnedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D4162040A8BB0072F936 /* ReturnedUserTableViewCell.swift */; };
 		FFC8D4192041F6570072F936 /* SeachedUserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D4182041F6570072F936 /* SeachedUserAccountViewController.swift */; };
 		FFC8D41B2043CF030072F936 /* SearchedUserImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D41A2043CF030072F936 /* SearchedUserImagesCollectionViewCell.swift */; };
+		FFC8D41F2044EC200072F936 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D41E2044EC200072F936 /* NotificationTableViewCell.swift */; };
 		FFDE69C9203B94340096D45D /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE69C8203B94340096D45D /* UserSearchViewController.swift */; };
 		FFDE69CB203B94590096D45D /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE69CA203B94590096D45D /* UploadViewController.swift */; };
 		FFDE69CD203B947D0096D45D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE69CC203B947D0096D45D /* NotificationViewController.swift */; };
@@ -77,6 +78,7 @@
 		FFC8D4162040A8BB0072F936 /* ReturnedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnedUserTableViewCell.swift; sourceTree = "<group>"; };
 		FFC8D4182041F6570072F936 /* SeachedUserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachedUserAccountViewController.swift; sourceTree = "<group>"; };
 		FFC8D41A2043CF030072F936 /* SearchedUserImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFC8D41E2044EC200072F936 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		FFDE69C8203B94340096D45D /* UserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		FFDE69CA203B94590096D45D /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		FFDE69CC203B947D0096D45D /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				FFC8D4182041F6570072F936 /* SeachedUserAccountViewController.swift */,
 				FFC8D41A2043CF030072F936 /* SearchedUserImagesCollectionViewCell.swift */,
 				FFDE69CC203B947D0096D45D /* NotificationViewController.swift */,
+				FFC8D41E2044EC200072F936 /* NotificationTableViewCell.swift */,
 				FFDE69CE203B94AE0096D45D /* ForumViewController.swift */,
 				FF9EC8BD2029302100ADFAD3 /* Main.storyboard */,
 				FF9EC8C32029302100ADFAD3 /* Assets.xcassets */,
@@ -500,6 +503,7 @@
 			files = (
 				FFC8D41B2043CF030072F936 /* SearchedUserImagesCollectionViewCell.swift in Sources */,
 				FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */,
+				FFC8D41F2044EC200072F936 /* NotificationTableViewCell.swift in Sources */,
 				FFDE69CB203B94590096D45D /* UploadViewController.swift in Sources */,
 				FFC8D40A203F74C90072F936 /* UserImageViewController.swift in Sources */,
 				FFC5FB22203B717200476CD4 /* UserAccountViewController.swift in Sources */,

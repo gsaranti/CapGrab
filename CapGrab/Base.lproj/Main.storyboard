@@ -179,22 +179,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Notification" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xlO-UZ-Sak">
-                                <rect key="frame" x="135" y="201" width="95" height="36"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HxS-Ab-Pv8">
+                                <rect key="frame" x="119" y="75" width="137" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Captions"/>
+                                    <segment title="Follows"/>
+                                </segments>
+                                <connections>
+                                    <action selector="captionOrFollow:" destination="YEw-RI-R6I" eventType="valueChanged" id="POO-oN-w2Z"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KUt-iz-vob">
+                                <rect key="frame" x="0.0" y="111" width="375" height="507"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notificationCell" id="RPM-hc-JfF" customClass="NotificationTableViewCell" customModule="CapGrab" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RPM-hc-JfF" id="ZiV-l0-kcf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okH-eV-yAI">
+                                                    <rect key="frame" x="82" y="0.0" width="179" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnL-je-UrQ">
+                                                    <rect key="frame" x="296" y="2" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="notificationAction:" destination="RPM-hc-JfF" eventType="touchUpInside" id="IEp-AD-Vdd"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationButton" destination="ZnL-je-UrQ" id="3Qd-EH-wRV"/>
+                                            <outlet property="notificationMessage" destination="okH-eV-yAI" id="Tgd-rM-PKp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YEw-RI-R6I" id="7Pw-gs-q7V"/>
+                                    <outlet property="delegate" destination="YEw-RI-R6I" id="jwM-3a-Ye3"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="BuX-Jf-iaE"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Notifications" id="dO6-7z-McZ"/>
+                    <connections>
+                        <outlet property="notificationsSegmentControl" destination="HxS-Ab-Pv8" id="qjP-dZ-kzz"/>
+                        <outlet property="notificationsTableView" destination="KUt-iz-vob" id="QBQ-rg-2Dq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jng-m1-jDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1841" y="900"/>
+            <point key="canvasLocation" x="1840.8" y="899.10044977511257"/>
         </scene>
         <!--Upload-->
         <scene sceneID="1KI-sO-o4Q">
@@ -442,6 +490,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Shq-bn-os3"/>
+        <segue reference="qEH-sb-rOI"/>
     </inferredMetricsTieBreakers>
 </document>

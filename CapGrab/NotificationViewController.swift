@@ -7,13 +7,77 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
-class NotificationViewController: UIViewController {
-
+class NotificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var notificationsTableView: UITableView!
+    @IBOutlet weak var notificationsSegmentControl: UISegmentedControl!
+    
+    var currentUserFollowRequests = [String]()
+    var currentUserFollowRequestUserNames = [String]()
+    var currentUserFollowers = [String]()
+    
+    
+    @IBAction func captionOrFollow(_ sender: Any) {
+        if notificationsSegmentControl.selectedSegmentIndex == 0 {
+            notificationsTableView.reloadData()
+        } else {
+            notificationsTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if notificationsSegmentControl.selectedSegmentIndex == 0 {
+            return currentUserFollowRequests.count
+        } else {
+            return currentUserFollowRequests.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if notificationsSegmentControl.selectedSegmentIndex == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
+            cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item]) would like to follow you!"
+            cell.notificationButton.setTitle("Follow", for: [])
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
+            cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item]) would like to follow you!"
+            cell.notificationButton.setTitle("Follow", for: [])
+            return cell
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let ref: DatabaseReference!
+        ref = Database.database().reference()
+        let currentUserID = Auth.auth().currentUser?.uid
+        ref.child("users").child(currentUserID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if (value?["followRequests"] as? [String]) != nil {
+                self.currentUserFollowRequests = (value?["followRequests"] as? [String])!
+            }
+            if (value?["followers"] as? [String]) != nil {
+                self.currentUserFollowers = (value?["followers"] as? [String])!
+            }
+            for userIDs in self.currentUserFollowRequests {
+                ref.child("users").child(userIDs).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    let userName = value?["userName"] as? String
+                    self.currentUserFollowRequestUserNames.append(userName!)
+                    self.notificationsTableView.reloadData()
+                }){ (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
     }
 
     override func didReceiveMemoryWarning() {

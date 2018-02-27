@@ -90,6 +90,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
+            
             if (value?["followers"] as? [String]) != nil {
                 self.followersArray = (value?["photos"] as? [String])!
             }
@@ -99,6 +100,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             if (value?["followRequests"] as? [String]) != nil {
                 self.followRequests = (value?["followRequests"] as? [String])!
             }
+            
             if(self.followersArray.contains(self.currentUserID!)) {
                 self.isFollower = true
                 self.followButton.setTitle("Unfollow", for: [])
@@ -110,6 +112,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                 self.isFollower = false
                 self.followButton.setTitle("Follow", for: [])
             }
+            
             if(self.isFollower == true) {
                 if (value?["photos"] as? [String]) != nil {
                     self.imagePaths = (value?["photos"] as? [String])!
@@ -127,6 +130,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                     })
                 }
             }
+            
             let profilePicturePath = (value?["profilePicture"] as! String)
             let profilePictureImage = storage.reference(forURL: profilePicturePath)
             profilePictureImage.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
@@ -136,7 +140,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                     self.profilePicture.image = UIImage(data: data!)
                 }
             })
-            
         }){ (error) in
             print(error.localizedDescription)
         }
@@ -157,8 +160,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! UITabBarController
