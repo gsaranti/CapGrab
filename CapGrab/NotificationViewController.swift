@@ -19,7 +19,9 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     var currentUserFollowRequests = [String]()
     var currentUserFollowRequestUserNames = [String]()
     var currentUserFollowers = [String]()
+    var requestUserFollowing = [String]()
     var notifications = [Any]()
+    var segueUserID = String()
     
     @IBAction func captionOrFollow(_ sender: Any) {
         if notificationsSegmentControl.selectedSegmentIndex == 0 {
@@ -47,11 +49,29 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
             cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item])"
             cell.notificationButton.setTitle("Follow", for: [])
+            if(self.currentUserFollowers.count >= 20) {
+                cell.notificationButton.isEnabled = false
+            }
             cell.followRequestUserID = currentUserFollowRequests[indexPath.item]
             cell.followers = currentUserFollowers
             cell.followRequests = currentUserFollowRequests
+            let ref: DatabaseReference!
+            ref = Database.database().reference()
+            ref.child("users").child(cell.followRequestUserID).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                if (value?["following"] as? [String]) != nil {
+                    self.requestUserFollowing = (value?["following"] as? [String])!
+                }
+            }){ (error) in
+                print(error.localizedDescription)
+            }
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        segueUserID = currentUserFollowRequests[indexPath.item]
+        self.performSegue(withIdentifier: "followNotificationSegue", sender: self)
     }
     
     override func viewDidLoad() {
@@ -92,14 +112,11 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination as! SeachedUserAccountViewController
+        destination.searchedUserID = segueUserID
+        destination.lastViewController = "NotificationViewController"
     }
-    */
 
 }

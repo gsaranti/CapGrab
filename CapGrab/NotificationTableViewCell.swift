@@ -17,6 +17,7 @@ class NotificationTableViewCell: UITableViewCell {
     var followRequestUserID = String()
     var followRequests = [String]()
     var followers = [String]()
+    var requestUserFollowing = [String]()
     
     @IBAction func notificationAction(_ sender: Any) {
         notificationButton.isEnabled = false
@@ -26,8 +27,10 @@ class NotificationTableViewCell: UITableViewCell {
         followers.append(followRequestUserID)
         let followRequestIndex = followRequests.index(of: followRequestUserID)
         followRequests.remove(at: followRequestIndex!)
+        requestUserFollowing.append(currentUserID!)
         ref.child("users/\(currentUserID ?? "")/followers").setValue(followers)
         ref.child("users/\(currentUserID ?? "")/followRequests").setValue(followRequests)
+        ref.child("users/\(followRequestUserID)/following").setValue(requestUserFollowing)
     }
     
     override func awakeFromNib() {

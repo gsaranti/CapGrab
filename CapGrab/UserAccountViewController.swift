@@ -20,6 +20,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var followers = [String]()
     var following = [String]()
 
+    
+    @IBOutlet weak var followingButton: UIButton!
+    @IBOutlet weak var followersButton: UIButton!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var userName: UITextView!
@@ -50,6 +53,14 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             if (value?["photos"] as? [String]) != nil {
                 self.imagePaths = (value?["photos"] as? [String])!
             }
+            if (value?["followers"] as? [String]) != nil {
+                self.followers = (value?["followers"] as? [String])!
+            }
+            if (value?["following"] as? [String]) != nil {
+                self.following = (value?["following"] as? [String])!
+            }
+            self.followersButton.setTitle("\(self.followers.count) \nFollowers", for: [])
+            self.followingButton.setTitle("\(self.following.count) \nFollowing", for: [])
             for path in self.imagePaths {
                 let httpsReference = storage.reference(forURL: path)
                 httpsReference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in

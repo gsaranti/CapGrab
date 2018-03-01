@@ -146,12 +146,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-W0-g3v">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-W0-g3v">
                                 <rect key="frame" x="137" y="40" width="75" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Followers"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-WH-tH5">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-WH-tH5">
                                 <rect key="frame" x="254" y="50" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Following"/>
@@ -162,6 +162,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="mz2-VW-FNh"/>
                     <connections>
+                        <outlet property="followersButton" destination="LJU-W0-g3v" id="fZg-dZ-paE"/>
+                        <outlet property="followingButton" destination="3kR-WH-tH5" id="v5z-Hm-Gq3"/>
                         <outlet property="imageCollection" destination="htw-HJ-1ZQ" id="0kx-5B-dTf"/>
                         <outlet property="profilePicture" destination="RBM-L8-wOG" id="RRj-uX-BIr"/>
                         <outlet property="userName" destination="FTq-lw-EJl" id="EUj-Bb-Sk1"/>
@@ -238,6 +240,7 @@
                     <connections>
                         <outlet property="notificationsSegmentControl" destination="HxS-Ab-Pv8" id="qjP-dZ-kzz"/>
                         <outlet property="notificationsTableView" destination="KUt-iz-vob" id="QBQ-rg-2Dq"/>
+                        <segue destination="fkP-xm-AOU" kind="show" identifier="followNotificationSegue" id="zU5-D9-ZRN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jng-m1-jDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -351,12 +354,12 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7D-lF-Fgs">
-                                <rect key="frame" x="116" y="70" width="93" height="30"/>
+                                <rect key="frame" x="116" y="48" width="93" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Followers"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRy-PA-j0X">
-                                <rect key="frame" x="244" y="70" width="89" height="30"/>
+                                <rect key="frame" x="244" y="45" width="89" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Following"/>
                             </button>
@@ -435,12 +438,12 @@
                     <connections>
                         <outlet property="userSearch" destination="Uuf-31-aA0" id="XLJ-Hg-I7d"/>
                         <outlet property="usersTable" destination="IcJ-Ob-28C" id="H6u-iE-T8X"/>
-                        <segue destination="fkP-xm-AOU" kind="show" identifier="searchSegue" id="zfq-cN-exs"/>
+                        <segue destination="fkP-xm-AOU" kind="show" identifier="searchSegue" id="2ew-Qu-I9c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewF-1n-Ms4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677.5999999999999" y="-341.37931034482762"/>
+            <point key="canvasLocation" x="2678" y="-365"/>
         </scene>
         <!--Forum-->
         <scene sceneID="oxk-Jz-hUV">
@@ -490,6 +493,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qEH-sb-rOI"/>
+        <segue reference="Shq-bn-os3"/>
+        <segue reference="zU5-D9-ZRN"/>
     </inferredMetricsTieBreakers>
 </document>

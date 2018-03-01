@@ -21,6 +21,8 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     var followersArray = [String]()
     var followingArray = [String]()
     var followRequests = [String]()
+    var currentUserFollowingArray = [String]()
+    var lastViewController = String()
     
     var isFollower = false
     var hasRequested = false
@@ -37,10 +39,15 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         if(isFollower == true) {
             let index = followersArray.index(of: currentUserID!)
             followersArray.remove(at: index!)
+            let searchedUserIndex = currentUserFollowingArray.index(of: searchedUserID)
+            print(searchedUserIndex!)
+            print(index!)
+            currentUserFollowingArray.remove(at: searchedUserIndex!)
             isFollower = false
             let ref: DatabaseReference!
             ref = Database.database().reference()
             ref.child("users/\(self.searchedUserID)/followers").setValue(self.followersArray)
+            ref.child("users/\(currentUserID!)/following").setValue(self.currentUserFollowingArray)
             reloadPage()
         } else if(hasRequested == true) {
             let index = followRequests.index(of: currentUserID!)
@@ -132,6 +139,15 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         }){ (error) in
             print(error.localizedDescription)
         }
+        ref.child("users").child(currentUserID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if (value?["following"] as? [String]) != nil {
+                self.currentUserFollowingArray = (value?["following"] as? [String])!
+            }
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+            
     }
     
     override func viewDidLoad() {
@@ -151,8 +167,12 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! UITabBarController
-        destination.selectedIndex = 1
+        if(lastViewController == "NotificationViewController") {
+            let destination = segue.destination as! UITabBarController
+            destination.selectedIndex = 3
+        } else {
+            let destination = segue.destination as! UITabBarController
+            destination.selectedIndex = 1
+        }
     }
-
 }
