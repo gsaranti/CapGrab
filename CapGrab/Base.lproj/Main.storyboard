@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="o1y-kD-Uqb">
-                                <rect key="frame" x="127" y="207" width="121" height="29"/>
+                                <rect key="frame" x="124" y="155" width="121" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Login"/>
@@ -42,21 +42,21 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0c3-we-2sb">
-                                <rect key="frame" x="100" y="318" width="174" height="30"/>
+                                <rect key="frame" x="97" y="266" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zeb-w9-dYn">
-                                <rect key="frame" x="100" y="379" width="174" height="30"/>
+                                <rect key="frame" x="97" y="318" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lPg-mB-HQ5">
-                                <rect key="frame" x="100" y="261" width="174" height="30"/>
+                                <rect key="frame" x="97" y="217" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -74,6 +74,13 @@
                                     <action selector="selectProfilePicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ln-Yu-Nce"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4xG-Ql-hT4">
+                                <rect key="frame" x="97" y="368" width="174" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -83,6 +90,7 @@
                         <outlet property="LoginOrSignUp" destination="o1y-kD-Uqb" id="vz1-4R-wQA"/>
                         <outlet property="email" destination="0c3-we-2sb" id="FCs-Oc-w3G"/>
                         <outlet property="password" destination="zeb-w9-dYn" id="7Ah-aj-d4W"/>
+                        <outlet property="passwordCheck" destination="4xG-Ql-hT4" id="uKN-Le-pcK"/>
                         <outlet property="profilePicture" destination="KB5-MB-Qno" id="OUo-Gm-F8Z"/>
                         <outlet property="selectPicture" destination="ZjR-uL-7wN" id="RWw-BN-Ioi"/>
                         <outlet property="userName" destination="lPg-mB-HQ5" id="wQ2-e0-nP3"/>
@@ -493,7 +501,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Shq-bn-os3"/>
+        <segue reference="qEH-sb-rOI"/>
         <segue reference="zU5-D9-ZRN"/>
     </inferredMetricsTieBreakers>
 </document>

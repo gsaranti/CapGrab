@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var passwordCheck: UITextField!
     
     @IBOutlet weak var EnterButton: UIButton!
     @IBOutlet weak var selectPicture: UIButton!
@@ -32,11 +33,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func userNameVisibility(_ sender: Any) {
         if LoginOrSignUp.selectedSegmentIndex == 0 {
             userName.isHidden = true
+            passwordCheck.isHidden = true
             profilePicture.isHidden = true
             selectPicture.isHidden = true
             EnterButton.frame.origin = CGPoint(x: 132, y: 446)
         } else {
             userName.isHidden = false
+            passwordCheck.isHidden = false
             profilePicture.isHidden = false
             selectPicture.isHidden = false
             EnterButton.frame.origin = CGPoint(x: 132, y: 550)
@@ -73,6 +76,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.performSegue(withIdentifier:"loginSegue",sender: self)
             })
         } else {
+            if password.text != passwordCheck.text {
+                let message = "Your passwords do not match!"
+                let alert = UIAlertController(title: "Uh Oh", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            if email.text == "" || userName.text == "" || password.text == "" || passwordCheck.text == "" {
+                let message = "Make sure you have filled all of the fields!"
+                let alert = UIAlertController(title: "Uh Oh", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             Auth.auth().createUser(withEmail: email.text!, password: password.text!, completion: { (user, error) in
                 if error != nil {
                     print(error?.localizedDescription as Any)
@@ -106,12 +123,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         userName.isHidden = true
         profilePicture.isHidden = true
+        passwordCheck.isHidden = true
         profilePicture.image = UIImage(named: "images")
         profilePicture.layer.cornerRadius = 40.0
         profilePicture.clipsToBounds = true
         selectPicture.isHidden = true
         email.placeholder = "Email"
         password.placeholder = "Password"
+        passwordCheck.placeholder = "Re-enter Password"
         userName.placeholder = "Username"
         EnterButton.layer.cornerRadius = 5
         

@@ -40,8 +40,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             let index = followersArray.index(of: currentUserID!)
             followersArray.remove(at: index!)
             let searchedUserIndex = currentUserFollowingArray.index(of: searchedUserID)
-            print(searchedUserIndex!)
-            print(index!)
             currentUserFollowingArray.remove(at: searchedUserIndex!)
             isFollower = false
             let ref: DatabaseReference!
