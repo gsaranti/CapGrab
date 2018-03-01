@@ -37,34 +37,23 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         if(isFollower == true) {
             let index = followersArray.index(of: currentUserID!)
             followersArray.remove(at: index!)
+            isFollower = false
             let ref: DatabaseReference!
             ref = Database.database().reference()
-            ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
-                ref.child("users/\(self.searchedUserID)/followersArray").setValue(self.followersArray)
-            }){ (error) in
-                print(error.localizedDescription)
-            }
+            ref.child("users/\(self.searchedUserID)/followers").setValue(self.followersArray)
             reloadPage()
         } else if(hasRequested == true) {
             let index = followRequests.index(of: currentUserID!)
             followRequests.remove(at: index!)
             let ref: DatabaseReference!
             ref = Database.database().reference()
-            ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
-                ref.child("users/\(self.searchedUserID)/followRequests").setValue(self.followRequests)
-            }){ (error) in
-                print(error.localizedDescription)
-            }
+            ref.child("users/\(self.searchedUserID)/followRequests").setValue(self.followRequests)
             reloadPage()
         } else {
             let ref: DatabaseReference!
             ref = Database.database().reference()
             followRequests.append(currentUserID!)
-            ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
-                ref.child("users/\(self.searchedUserID)/followRequests").setValue(self.followRequests)
-            }){ (error) in
-                print(error.localizedDescription)
-            }
+            ref.child("users/\(self.searchedUserID)/followRequests").setValue(self.followRequests)
             reloadPage()
         }
     }
@@ -92,7 +81,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             self.userName.text = (value?["userName"] as! String)
             
             if (value?["followers"] as? [String]) != nil {
-                self.followersArray = (value?["photos"] as? [String])!
+                self.followersArray = (value?["followers"] as? [String])!
             }
             if (value?["following"] as? [String]) != nil {
                 self.followingArray = (value?["following"] as? [String])!

@@ -19,7 +19,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     var currentUserFollowRequests = [String]()
     var currentUserFollowRequestUserNames = [String]()
     var currentUserFollowers = [String]()
-    
+    var notifications = [Any]()
     
     @IBAction func captionOrFollow(_ sender: Any) {
         if notificationsSegmentControl.selectedSegmentIndex == 0 {
@@ -31,7 +31,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if notificationsSegmentControl.selectedSegmentIndex == 0 {
-            return currentUserFollowRequests.count
+            return notifications.count
         } else {
             return currentUserFollowRequests.count
         }
@@ -40,13 +40,16 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if notificationsSegmentControl.selectedSegmentIndex == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
-            cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item]) would like to follow you!"
-            cell.notificationButton.setTitle("Follow", for: [])
+            cell.notificationMessage.text = "\(notifications[indexPath.item]) captioned your post!"
+            cell.notificationButton.isHidden = true
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
-            cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item]) would like to follow you!"
+            cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item])"
             cell.notificationButton.setTitle("Follow", for: [])
+            cell.followRequestUserID = currentUserFollowRequests[indexPath.item]
+            cell.followers = currentUserFollowers
+            cell.followRequests = currentUserFollowRequests
             return cell
         }
     }
@@ -61,6 +64,9 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
             let value = snapshot.value as? NSDictionary
             if (value?["followRequests"] as? [String]) != nil {
                 self.currentUserFollowRequests = (value?["followRequests"] as? [String])!
+            }
+            if (value?["notifications"] as? [Any]) != nil {
+                self.notifications = (value?["notifications"] as? [Any])!
             }
             if (value?["followers"] as? [String]) != nil {
                 self.currentUserFollowers = (value?["followers"] as? [String])!
