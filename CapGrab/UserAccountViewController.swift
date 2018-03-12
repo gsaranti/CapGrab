@@ -26,6 +26,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var userName: UITextView!
+    var selectedImage = UIImage()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -34,7 +35,12 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! UserImageViewController
         cell.userImage.image = imageArray[indexPath.item]
+        selectedImage =  cell.userImage.image!
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "singlePhotoSegue", sender: [])
     }
     
     override func viewDidLoad() {
@@ -94,14 +100,10 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination as! SingleImageViewController
+        destination.passedSingleImage = selectedImage
+        destination.lastViewController = "UserAccountViewController"
     }
-    */
 
 }

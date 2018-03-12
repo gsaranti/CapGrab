@@ -101,6 +101,39 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
+        <!--Single Image View Controller-->
+        <scene sceneID="DMc-8p-E2h">
+            <objects>
+                <viewController id="sEy-Ar-lfV" customClass="SingleImageViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GQt-Nq-4UM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ozz-X9-WL8">
+                                <rect key="frame" x="0.0" y="77" width="375" height="378"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHZ-jE-QUo">
+                                <rect key="frame" x="22" y="39" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="tgt-nx-jpV" kind="show" id="opg-Dd-zh3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="1Yl-xX-Hac"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="tHZ-jE-QUo" id="Z6o-m4-u4P"/>
+                        <outlet property="singleImage" destination="Ozz-X9-WL8" id="1Nl-Sy-2YD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IJc-M9-iuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119.2" y="906.29685157421295"/>
+        </scene>
         <!--Account-->
         <scene sceneID="kb4-Fc-Ttk">
             <objects>
@@ -175,6 +208,7 @@
                         <outlet property="imageCollection" destination="htw-HJ-1ZQ" id="0kx-5B-dTf"/>
                         <outlet property="profilePicture" destination="RBM-L8-wOG" id="RRj-uX-BIr"/>
                         <outlet property="userName" destination="FTq-lw-EJl" id="EUj-Bb-Sk1"/>
+                        <segue destination="sEy-Ar-lfV" kind="show" identifier="singlePhotoSegue" id="ZpJ-sJ-atO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5w-mz-h6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -501,7 +535,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qEH-sb-rOI"/>
+        <segue reference="Shq-bn-os3"/>
         <segue reference="zU5-D9-ZRN"/>
+        <segue reference="opg-Dd-zh3"/>
     </inferredMetricsTieBreakers>
 </document>

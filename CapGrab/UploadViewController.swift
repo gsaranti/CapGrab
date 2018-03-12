@@ -53,6 +53,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     let uploadedImageURL = metadata?.downloadURL()?.absoluteString
                     self.imagePathArray.append(uploadedImageURL!)
                     ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
+                    //ref.child("photos").child(uploadedImageURL!).setValue(["captions": ""])
                 }){ (error) in
                     print(error.localizedDescription)
                 }
