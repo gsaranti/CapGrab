@@ -53,10 +53,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     let uploadedImageURL = metadata?.downloadURL()?.absoluteString
                     self.imagePathArray.append(uploadedImageURL!)
                     ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
-                    //ref.child("photos").child(uploadedImageURL!).setValue(["captions": ""])
                 }){ (error) in
                     print(error.localizedDescription)
                 }
+                ref.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    let uploadedImageURL = metadata?.downloadURL()?.absoluteString
+                    ref.child("photos").setValue(uploadedImageURL)
+                })
             }
             performSegue(withIdentifier: "postUploadSegue", sender: self)
         }

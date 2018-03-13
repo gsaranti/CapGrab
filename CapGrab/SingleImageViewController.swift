@@ -15,6 +15,10 @@ class SingleImageViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     var lastViewController = String()
     
+    @IBAction func backToAccount(_ sender: Any) {
+        performSegue(withIdentifier: "backToAccountSegue", sender: [])
+    }
+    
     override func viewDidLoad() {
         singleImage.image = passedSingleImage
         super.viewDidLoad()
@@ -28,14 +32,10 @@ class SingleImageViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination as! UITabBarController
+        destination.selectedIndex = 0
     }
-    */
 
 }

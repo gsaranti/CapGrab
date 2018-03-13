@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ozz-X9-WL8">
-                                <rect key="frame" x="0.0" y="77" width="375" height="378"/>
+                                <rect key="frame" x="0.0" y="77" width="375" height="374"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHZ-jE-QUo">
@@ -118,7 +118,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="tgt-nx-jpV" kind="show" id="opg-Dd-zh3"/>
+                                    <action selector="backToAccount:" destination="sEy-Ar-lfV" eventType="touchUpInside" id="tPf-II-Zln"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -128,6 +128,7 @@
                     <connections>
                         <outlet property="backButton" destination="tHZ-jE-QUo" id="Z6o-m4-u4P"/>
                         <outlet property="singleImage" destination="Ozz-X9-WL8" id="1Nl-Sy-2YD"/>
+                        <segue destination="mM3-zV-DD2" kind="show" identifier="backToAccountSegue" id="y6a-Bo-wcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJc-M9-iuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -535,8 +536,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Shq-bn-os3"/>
+        <segue reference="y6a-Bo-wcR"/>
         <segue reference="zU5-D9-ZRN"/>
-        <segue reference="opg-Dd-zh3"/>
     </inferredMetricsTieBreakers>
 </document>
