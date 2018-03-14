@@ -18,7 +18,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var uploadButton: UIButton!
     
     let imageLibrary = UIImagePickerController()
-    var imagePathArray = [String]()
+    var imagePathArray = [Any]()
     
     @IBAction func browsePhotoLibrary(_ sender: Any) {
         self.present(imageLibrary, animated: true, completion: nil)
@@ -47,8 +47,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 ref = Database.database().reference()
                 ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     let value = snapshot.value as? NSDictionary
-                    if (value?["photos"] as? [String]) != nil {
-                        self.imagePathArray = (value?["photos"] as? [String])!
+                    if (value?["photos"] as? [Any]) != nil {
+                        self.imagePathArray = (value?["photos"] as? [Any])!
                     }
                     let uploadedImageURL = metadata?.downloadURL()?.absoluteString
                     self.imagePathArray.append(uploadedImageURL!)
@@ -56,13 +56,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }){ (error) in
                     print(error.localizedDescription)
                 }
-                let uploadedImageURL = metadata?.downloadURL()?.absoluteString
+                let arrayLength = String(self.imagePathArray.count)
+                let captions = [String]()
                 let upVotes = [String]()
                 let downVotes = [String]()
-                var captionArray = [Any]()
-                captionArray.append(("caption", upVotes, downVotes))
-                
-                //ref.child("photos").child().setValue(["URL" : uploadedImageURL])
+                ref.child("photos").child(userID ?? "").child(arrayLength).setValue(["captions" : captions, "upVotes" : upVotes, "downVotes" : downVotes])
 
             }
             performSegue(withIdentifier: "postUploadSegue", sender: self)

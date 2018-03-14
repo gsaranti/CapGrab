@@ -109,7 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     let followers = [String]()
                     let following = [String]()
                     let followRequests = [String]()
-                    let photoPaths = [String]()
+                    let photoPaths = [Any]()
                     let notifications = [Any]()
                     ref.child("users").child((user?.uid)!).setValue(["userName": self.userName.text!, "email": self.email.text!, "capScore": 0, "fullName": "", "profilePicture": profilePictureURL!, "photos": photoPaths, "followers": followers, "following": following, "followRequests": followRequests, "notifications": notifications])
                 })
