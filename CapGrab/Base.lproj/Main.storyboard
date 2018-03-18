@@ -101,40 +101,6 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--Single Image View Controller-->
-        <scene sceneID="DMc-8p-E2h">
-            <objects>
-                <viewController id="sEy-Ar-lfV" customClass="SingleImageViewController" customModule="CapGrab" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GQt-Nq-4UM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ozz-X9-WL8">
-                                <rect key="frame" x="0.0" y="77" width="375" height="374"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHZ-jE-QUo">
-                                <rect key="frame" x="22" y="39" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backToAccount:" destination="sEy-Ar-lfV" eventType="touchUpInside" id="tPf-II-Zln"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="1Yl-xX-Hac"/>
-                    </view>
-                    <connections>
-                        <outlet property="backButton" destination="tHZ-jE-QUo" id="Z6o-m4-u4P"/>
-                        <outlet property="singleImage" destination="Ozz-X9-WL8" id="1Nl-Sy-2YD"/>
-                        <segue destination="mM3-zV-DD2" kind="show" identifier="backToAccountSegue" id="y6a-Bo-wcR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IJc-M9-iuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-119.2" y="906.29685157421295"/>
-        </scene>
         <!--Account-->
         <scene sceneID="kb4-Fc-Ttk">
             <objects>
@@ -198,18 +164,104 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Following"/>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dR-ja-VsY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47a-qB-O0k">
+                                        <rect key="frame" x="0.0" y="66" width="375" height="352"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4D-uW-ox5">
+                                        <rect key="frame" x="8" y="28" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="hideSingleImageView:" destination="tgt-nx-jpV" eventType="touchUpInside" id="zal-Q6-wMb"/>
+                                        </connections>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fma-TA-isv">
+                                        <rect key="frame" x="0.0" y="412" width="375" height="221"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="captionCell" rowHeight="50" id="tXQ-tc-hKT" customClass="CaptionTableViewCell" customModule="CapGrab" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tXQ-tc-hKT" id="MNm-ue-NXD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pcf-AT-dxU">
+                                                            <rect key="frame" x="318" y="19" width="39" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Down"/>
+                                                            <connections>
+                                                                <action selector="downVoteAction:" destination="tXQ-tc-hKT" eventType="touchUpInside" id="ybJ-gA-dwY"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-aV-NtH">
+                                                            <rect key="frame" x="322" y="-7" width="30" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Up"/>
+                                                            <connections>
+                                                                <action selector="upVoteAction:" destination="tXQ-tc-hKT" eventType="touchUpInside" id="Dsv-eA-j80"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-9S-Qt1">
+                                                            <rect key="frame" x="47" y="2" width="250" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="captionText" destination="kF9-9S-Qt1" id="s07-zH-dMd"/>
+                                                    <outlet property="downVoteButton" destination="Pcf-AT-dxU" id="0Hd-es-vVw"/>
+                                                    <outlet property="upVoteButton" destination="aY0-aV-NtH" id="Jw7-bG-Vnz"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="tgt-nx-jpV" id="flR-yF-yJ6"/>
+                                            <outlet property="delegate" destination="tgt-nx-jpV" id="A99-BY-75R"/>
+                                        </connections>
+                                    </tableView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Twl-kp-Yly">
+                                        <rect key="frame" x="8" y="636" width="282" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awu-mF-Fy0">
+                                        <rect key="frame" x="321" y="636" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="addNewCaption:" destination="tgt-nx-jpV" eventType="touchUpInside" id="5C1-pL-bfa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="0ZF-h0-nIL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="mz2-VW-FNh"/>
                     <connections>
+                        <outlet property="captionTableView" destination="Fma-TA-isv" id="s9g-64-qH6"/>
                         <outlet property="followersButton" destination="LJU-W0-g3v" id="fZg-dZ-paE"/>
                         <outlet property="followingButton" destination="3kR-WH-tH5" id="v5z-Hm-Gq3"/>
                         <outlet property="imageCollection" destination="htw-HJ-1ZQ" id="0kx-5B-dTf"/>
+                        <outlet property="newCaptionText" destination="Twl-kp-Yly" id="SNY-hX-E7m"/>
                         <outlet property="profilePicture" destination="RBM-L8-wOG" id="RRj-uX-BIr"/>
+                        <outlet property="singleImage" destination="47a-qB-O0k" id="IMk-Jd-7Le"/>
+                        <outlet property="singleImageView" destination="7dR-ja-VsY" id="u7i-KB-ew3"/>
                         <outlet property="userName" destination="FTq-lw-EJl" id="EUj-Bb-Sk1"/>
-                        <segue destination="sEy-Ar-lfV" kind="show" identifier="singlePhotoSegue" id="ZpJ-sJ-atO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5w-mz-h6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,6 +555,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBa-Kd-sSC">
+                                <rect key="frame" x="140" y="455" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="segueNow:" destination="4My-rb-0sL" eventType="touchUpInside" id="B5i-2p-RVk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="0ee-no-ATW"/>
@@ -536,7 +596,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="y6a-Bo-wcR"/>
-        <segue reference="zU5-D9-ZRN"/>
+        <segue reference="qEH-sb-rOI"/>
+        <segue reference="2ew-Qu-I9c"/>
     </inferredMetricsTieBreakers>
 </document>

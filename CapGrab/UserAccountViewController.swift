@@ -6,6 +6,7 @@
 //  Copyright © 2018 George Sarantinos. All rights reserved.
 //
 //  https://medium.com/yay-its-erica/creating-a-collection-view-swift-3-77da2898bb7c
+//  https://stackoverflow.com/questions/28777943/hide-tab-bar-in-ios-swift-app
 //
 
 import UIKit
@@ -13,12 +14,16 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class UserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class UserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     var imagePaths = [String]()
     var imageArray = [UIImage]()
     var followers = [String]()
     var following = [String]()
+    var captions = [String]()
+    var upVotes = [String]()
+    var downVotes = [String]()
+    var singleImageForCaption = Int()
 
     
     @IBOutlet weak var followingButton: UIButton!
@@ -27,6 +32,58 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var userName: UITextView!
     var selectedImage = UIImage()
+    @IBOutlet weak var singleImageView: UIView!
+    @IBOutlet weak var singleImage: UIImageView!
+    @IBOutlet weak var captionTableView: UITableView!
+    @IBOutlet weak var newCaptionText: UITextField!
+    
+    
+    
+    @IBAction func addNewCaption(_ sender: Any) {
+        let specificImage = String(singleImageForCaption)
+        let newCaption = newCaptionText.text
+        let ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("photos").child(userID!).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            var captionAmount = String()
+            var amountOfCaptions = Int()
+            if(value?["amountOfCaptions"] == nil) {
+                amountOfCaptions = 2
+                captionAmount = "1"
+            } else {
+                let amountOfCaptionsNode = value?["amountOfCaptions"] as! NSDictionary
+                let previousAmount = amountOfCaptionsNode["amountOfCaptions"] as! Int
+                amountOfCaptions = previousAmount + 1
+                captionAmount = String(previousAmount)
+            }
+            let caption = newCaption
+            let upVotes = [String]()
+            let downVotes = [String]()
+            let captionInfoArray = [caption!, upVotes, downVotes] as [Any]
+            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["captionInfo" : captionInfoArray])
+            ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
+
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    @IBAction func hideSingleImageView(_ sender: Any) {
+        singleImageView.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.captions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "captionCell", for: indexPath) as! CaptionTableViewCell
+        return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -35,12 +92,33 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! UserImageViewController
         cell.userImage.image = imageArray[indexPath.item]
-        selectedImage =  cell.userImage.image!
+        selectedImage = cell.userImage.image!
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "singlePhotoSegue", sender: [])
+        
+        self.upVotes.removeAll()
+        self.downVotes.removeAll()
+        singleImageForCaption = indexPath.item
+//        let ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        let userID = Auth.auth().currentUser?.uid
+//        ref.child("photos").child(userID!).child(String(indexPath.item)).observeSingleEvent(of: .value, with: { (snapshot) in
+//            let value = snapshot.value as? NSDictionary
+//            if (value?["upVotes"] as? [String]) != nil {
+//                self.upVotes = (value?["upVotes"] as? [String])!
+//            }
+//            if (value?["downVotes"] as? [String]) != nil {
+//                self.downVotes = (value?["downVotes"] as? [String])!
+//            }
+//        }){ (error) in
+//            print(error.localizedDescription)
+//        }
+        
+        singleImage.image = self.selectedImage
+        self.tabBarController?.tabBar.isHidden = true
+        singleImageView.isHidden = false
     }
     
     override func viewDidLoad() {
@@ -48,6 +126,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         
         profilePicture.layer.cornerRadius = 32.0
         profilePicture.clipsToBounds = true
+        singleImageView.isHidden = true
+        self.captionTableView.delegate = self
+        self.captionTableView.delegate = self
         
         let storage = Storage.storage()
         let ref: DatabaseReference!
@@ -100,10 +181,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! SingleImageViewController
-        destination.passedSingleImage = selectedImage
-        destination.lastViewController = "UserAccountViewController"
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//    }
 
 }
