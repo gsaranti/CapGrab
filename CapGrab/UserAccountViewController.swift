@@ -92,7 +92,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! UserImageViewController
         cell.userImage.image = imageArray[indexPath.item]
-        selectedImage = cell.userImage.image!
         return cell
     }
     
@@ -101,22 +100,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         self.upVotes.removeAll()
         self.downVotes.removeAll()
         singleImageForCaption = indexPath.item
-//        let ref: DatabaseReference!
-//        ref = Database.database().reference()
-//        let userID = Auth.auth().currentUser?.uid
-//        ref.child("photos").child(userID!).child(String(indexPath.item)).observeSingleEvent(of: .value, with: { (snapshot) in
-//            let value = snapshot.value as? NSDictionary
-//            if (value?["upVotes"] as? [String]) != nil {
-//                self.upVotes = (value?["upVotes"] as? [String])!
-//            }
-//            if (value?["downVotes"] as? [String]) != nil {
-//                self.downVotes = (value?["downVotes"] as? [String])!
-//            }
-//        }){ (error) in
-//            print(error.localizedDescription)
-//        }
-        
-        singleImage.image = self.selectedImage
+        singleImage.image = imageArray[indexPath.item]
         self.tabBarController?.tabBar.isHidden = true
         singleImageView.isHidden = false
     }

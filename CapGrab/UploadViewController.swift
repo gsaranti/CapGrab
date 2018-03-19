@@ -45,20 +45,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
                 let ref: DatabaseReference!
                 ref = Database.database().reference()
-                var arrayLength = String()
                 ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     let value = snapshot.value as? NSDictionary
                     if (value?["photos"] as? [Any]) != nil {
                         self.imagePathArray = (value?["photos"] as? [Any])!
                     }
                     let uploadedImageURL = metadata?.downloadURL()?.absoluteString
-                    arrayLength = String(self.imagePathArray.count)
                     self.imagePathArray.append(uploadedImageURL!)
-                    let upVotes = [String]()
-                    let downVotes = [String]()
-                    let caption = String()
-                    let testArray = [caption , upVotes, downVotes] as [Any]
-                    ref.child("photos").child(userID ?? "").child(arrayLength).setValue(["captionInfo" : testArray])
                     ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
                 }){ (error) in
                     print(error.localizedDescription)
