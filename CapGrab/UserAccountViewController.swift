@@ -100,6 +100,12 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         self.upVotes.removeAll()
         self.downVotes.removeAll()
         singleImageForCaption = indexPath.item
+        let specificImage = String(singleImageForCaption)
+        
+        let ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("photos").child(userID!).child(specificImage)
         singleImage.image = imageArray[indexPath.item]
         self.tabBarController?.tabBar.isHidden = true
         singleImageView.isHidden = false
