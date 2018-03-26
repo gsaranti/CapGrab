@@ -66,10 +66,14 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["caption": caption])
             
             ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
+            
+            self.captions.append(caption!)
+            self.captionTableView.reloadData()
 
         }){ (error) in
             print(error.localizedDescription)
         }
+        self.newCaptionText.text?.removeAll()
     }
     
     
@@ -93,7 +97,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         } else {
             self.captionTableView.rowHeight = 60.0
         }
-//        cell.captionText.adjustsFontSizeToFitWidth = true
         
         return cell
     }
