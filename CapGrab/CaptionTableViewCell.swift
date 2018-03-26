@@ -18,11 +18,11 @@ class CaptionTableViewCell: UITableViewCell {
     
     
     @IBAction func upVoteAction(_ sender: Any) {
-
+        print("hi")
     }
     
     @IBAction func downVoteAction(_ sender: Any) {
-        
+        print("bye")
     }
     
     

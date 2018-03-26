@@ -32,7 +32,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var followersButton: UIButton!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var imageCollection: UICollectionView!
-    @IBOutlet weak var userName: UITextView!
+
+    @IBOutlet weak var userName: UILabel!
     var selectedImage = UIImage()
     @IBOutlet weak var singleImageView: UIView!
     @IBOutlet weak var singleImage: UIImageView!
@@ -61,10 +62,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                 captionAmount = String(previousAmount)
             }
             let caption = newCaption
-            let upVotes = [String]()
-            let downVotes = [String]()
-//            let captionInfoArray = [caption!, upVotes, downVotes] as [Any]
-//            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(captionInfoArray)
+
             ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["caption": caption])
             
             ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
@@ -78,6 +76,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func hideSingleImageView(_ sender: Any) {
         singleImageView.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+        self.captions.removeAll()
+        self.captionTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,6 +87,14 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "captionCell", for: indexPath) as! CaptionTableViewCell
         cell.captionText.text = self.captions[indexPath.item]
+        cell.captionText.numberOfLines = Int(Double(self.captions[indexPath.item].count / 2) * 2.5)
+        if(self.captions[indexPath.item].count > 60) {
+            self.captionTableView.rowHeight = (CGFloat(Double(self.captions[indexPath.item].count / 2) * 2.0))
+        } else {
+            self.captionTableView.rowHeight = 60.0
+        }
+//        cell.captionText.adjustsFontSizeToFitWidth = true
+        
         return cell
     }
     
@@ -113,10 +121,12 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         let userID = Auth.auth().currentUser?.uid
         ref.child("photos").child(userID!).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            for i in 1...value!.count - 1 {
-                let captionNumber = String(i)
-                let singleCaption = value![captionNumber]! as! NSDictionary
-                self.captions.append(singleCaption["caption"]! as! String)
+            if(value != nil) {
+                for i in 1...value!.count - 1 {
+                    let captionNumber = String(i)
+                    let singleCaption = value![captionNumber]! as! NSDictionary
+                    self.captions.append(singleCaption["caption"]! as! String)
+                }
             }
             self.captionTableView.reloadData()
         })
@@ -162,7 +172,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                         if let error = error {
                             print(error.localizedDescription)
                         } else {
-                            //let currentImage = UIImage(data: data!)
                             self.imageArray.append(UIImage(data: data!)!)
                             self.imageCollection.reloadData()
                             semaphore.signal()
