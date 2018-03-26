@@ -7,6 +7,7 @@
 //
 //  https://medium.com/yay-its-erica/creating-a-collection-view-swift-3-77da2898bb7c
 //  https://stackoverflow.com/questions/28777943/hide-tab-bar-in-ios-swift-app
+//  https://stackoverflow.com/questions/46091920/how-to-make-a-loop-wait-until-task-is-finished
 //
 
 import UIKit
@@ -24,6 +25,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var upVotes = [String]()
     var downVotes = [String]()
     var singleImageForCaption = Int()
+    var ready = true
 
     
     @IBOutlet weak var followingButton: UIButton!
@@ -61,8 +63,10 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             let caption = newCaption
             let upVotes = [String]()
             let downVotes = [String]()
-            let captionInfoArray = [caption!, upVotes, downVotes] as [Any]
-            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["captionInfo" : captionInfoArray])
+//            let captionInfoArray = [caption!, upVotes, downVotes] as [Any]
+//            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(captionInfoArray)
+            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["caption": caption])
+            
             ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
 
         }){ (error) in
@@ -82,6 +86,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "captionCell", for: indexPath) as! CaptionTableViewCell
+        cell.captionText.text = self.captions[indexPath.item]
         return cell
     }
     
@@ -99,13 +104,22 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         
         self.upVotes.removeAll()
         self.downVotes.removeAll()
+        self.captions.removeAll()
         singleImageForCaption = indexPath.item
         let specificImage = String(singleImageForCaption)
         
         let ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
-        ref.child("photos").child(userID!).child(specificImage)
+        ref.child("photos").child(userID!).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            for i in 1...value!.count - 1 {
+                let captionNumber = String(i)
+                let singleCaption = value![captionNumber]! as! NSDictionary
+                self.captions.append(singleCaption["caption"]! as! String)
+            }
+            self.captionTableView.reloadData()
+        })
         singleImage.image = imageArray[indexPath.item]
         self.tabBarController?.tabBar.isHidden = true
         singleImageView.isHidden = false
@@ -138,17 +152,23 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             }
             self.followersButton.setTitle("\(self.followers.count) \nFollowers", for: [])
             self.followingButton.setTitle("\(self.following.count) \nFollowing", for: [])
-            for path in self.imagePaths {
-                let httpsReference = storage.reference(forURL: path)
-                httpsReference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        let currentImage = UIImage(data: data!)
-                        self.imageArray.append(currentImage!)
-                        self.imageCollection.reloadData()
-                    }
-                })
+            
+            let semaphore = DispatchSemaphore(value: 1)
+            DispatchQueue.global().async { [unowned self] in
+                for path in self.imagePaths {
+                    semaphore.wait()
+                    let httpsReference = storage.reference(forURL: path)
+                    httpsReference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            //let currentImage = UIImage(data: data!)
+                            self.imageArray.append(UIImage(data: data!)!)
+                            self.imageCollection.reloadData()
+                            semaphore.signal()
+                        }
+                    })
+                }
             }
             let profilePicturePath = (value?["profilePicture"] as! String)
             let profilePictureImage = storage.reference(forURL: profilePicturePath)
@@ -164,6 +184,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             print(error.localizedDescription)
         }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

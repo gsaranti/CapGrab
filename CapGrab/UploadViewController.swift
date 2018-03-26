@@ -18,7 +18,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var uploadButton: UIButton!
     
     let imageLibrary = UIImagePickerController()
-    var imagePathArray = [Any]()
+    var imagePathArray = [String]()
     
     @IBAction func browsePhotoLibrary(_ sender: Any) {
         self.present(imageLibrary, animated: true, completion: nil)
@@ -47,11 +47,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 ref = Database.database().reference()
                 ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     let value = snapshot.value as? NSDictionary
-                    if (value?["photos"] as? [Any]) != nil {
-                        self.imagePathArray = (value?["photos"] as? [Any])!
+                    if (value?["photos"] as? [String]) != nil {
+                        self.imagePathArray = (value?["photos"] as? [String])!
                     }
-                    let uploadedImageURL = metadata?.downloadURL()?.absoluteString
-                    self.imagePathArray.append(uploadedImageURL!)
+                    let uploadedImageURL = (metadata?.downloadURL()?.absoluteString)!
+                    self.imagePathArray.append(uploadedImageURL)
                     ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
                 }){ (error) in
                     print(error.localizedDescription)
