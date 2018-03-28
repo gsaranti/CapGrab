@@ -145,7 +145,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         profilePicture.clipsToBounds = true
         singleImageView.isHidden = true
         self.captionTableView.delegate = self
-        self.captionTableView.delegate = self
         
         let storage = Storage.storage()
         let ref: DatabaseReference!

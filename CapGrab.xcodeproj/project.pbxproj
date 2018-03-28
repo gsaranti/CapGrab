@@ -10,6 +10,7 @@
 		6D059A58D7148C85F9A1DED5 /* Pods_CapGrabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F03A826B0C3B272DD58D212 /* Pods_CapGrabTests.framework */; };
 		848AFD587E176611A291297E /* Pods_CapGrabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665FB5A6A8201C28AA9B3BFC /* Pods_CapGrabUITests.framework */; };
 		C5866BF9F6D9DC0A26892ECC /* Pods_CapGrab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC0FBBA6BBCA5735E06BB1F /* Pods_CapGrab.framework */; };
+		FF68F332206ABD8300DBD4EF /* SearchedUserCaptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F331206ABD8300DBD4EF /* SearchedUserCaptionTableViewCell.swift */; };
 		FF9EC8BA2029302100ADFAD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */; };
 		FF9EC8BC2029302100ADFAD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9EC8BB2029302100ADFAD3 /* ViewController.swift */; };
 		FF9EC8BF2029302100ADFAD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9EC8BD2029302100ADFAD3 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		C2849FE3FD966490A0D01E73 /* Pods-CapGrab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab.debug.xcconfig"; sourceTree = "<group>"; };
 		CAAF498E3CDA5CDB35F6AEB6 /* Pods-CapGrabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabTests/Pods-CapGrabTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF989F42623A059B446A7901 /* Pods-CapGrabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabUITests/Pods-CapGrabUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FF68F331206ABD8300DBD4EF /* SearchedUserCaptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserCaptionTableViewCell.swift; sourceTree = "<group>"; };
 		FF9EC8B62029302100ADFAD3 /* CapGrab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapGrab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9EC8B92029302100ADFAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF9EC8BB2029302100ADFAD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -167,11 +169,12 @@
 				FF9EC8BB2029302100ADFAD3 /* ViewController.swift */,
 				FFDE69CA203B94590096D45D /* UploadViewController.swift */,
 				FFC5FB21203B717200476CD4 /* UserAccountViewController.swift */,
+				FFC8D4182041F6570072F936 /* SeachedUserAccountViewController.swift */,
+				FF68F331206ABD8300DBD4EF /* SearchedUserCaptionTableViewCell.swift */,
 				FFC8D426205A1FA00072F936 /* CaptionTableViewCell.swift */,
 				FFC8D409203F74C90072F936 /* UserImageViewController.swift */,
 				FFDE69C8203B94340096D45D /* UserSearchViewController.swift */,
 				FFC8D4162040A8BB0072F936 /* ReturnedUserTableViewCell.swift */,
-				FFC8D4182041F6570072F936 /* SeachedUserAccountViewController.swift */,
 				FFC8D41A2043CF030072F936 /* SearchedUserImagesCollectionViewCell.swift */,
 				FFDE69CC203B947D0096D45D /* NotificationViewController.swift */,
 				FFC8D41E2044EC200072F936 /* NotificationTableViewCell.swift */,
@@ -514,6 +517,7 @@
 				FFC8D4172040A8BB0072F936 /* ReturnedUserTableViewCell.swift in Sources */,
 				FFDE69CF203B94AE0096D45D /* ForumViewController.swift in Sources */,
 				FF9EC8C22029302100ADFAD3 /* CapGrab.xcdatamodeld in Sources */,
+				FF68F332206ABD8300DBD4EF /* SearchedUserCaptionTableViewCell.swift in Sources */,
 				FFC8D427205A1FA00072F936 /* CaptionTableViewCell.swift in Sources */,
 				FF9EC8BA2029302100ADFAD3 /* AppDelegate.swift in Sources */,
 				FFC8D4192041F6570072F936 /* SeachedUserAccountViewController.swift in Sources */,
