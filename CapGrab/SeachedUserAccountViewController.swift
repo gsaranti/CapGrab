@@ -50,7 +50,37 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     }
     
     @IBAction func addNewCaption(_ sender: Any) {
-        
+        let specificImage = String(singleImageForCaption)
+        let newCaption = captionText.text
+        let ref: DatabaseReference!
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("photos").child(userID!).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            var captionAmount = String()
+            var amountOfCaptions = Int()
+            if(value?["amountOfCaptions"] == nil) {
+                amountOfCaptions = 2
+                captionAmount = "1"
+            } else {
+                let amountOfCaptionsNode = value?["amountOfCaptions"] as! NSDictionary
+                let previousAmount = amountOfCaptionsNode["amountOfCaptions"] as! Int
+                amountOfCaptions = previousAmount + 1
+                captionAmount = String(previousAmount)
+            }
+            let caption = newCaption
+            
+            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["caption": caption])
+            
+            ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
+            
+            self.captions.append(caption!)
+            self.captionTableView.reloadData()
+            
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+        self.captionText.text?.removeAll()
     }
     
     @IBAction func userRelationAction(_ sender: Any) {
