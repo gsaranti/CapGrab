@@ -217,7 +217,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                             }
                         })
                     }
-            }
+                }
             }
             
             let profilePicturePath = (value?["profilePicture"] as! String)

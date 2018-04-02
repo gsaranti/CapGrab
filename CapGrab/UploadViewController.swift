@@ -5,6 +5,8 @@
 //  Created by George Sarantinos on 2/19/18.
 //  Copyright © 2018 George Sarantinos. All rights reserved.
 //
+//  https://firebase.google.com/docs/database/ios/read-and-write
+//
 
 import UIKit
 import FirebaseAuth
