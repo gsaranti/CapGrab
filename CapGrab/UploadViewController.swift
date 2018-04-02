@@ -38,26 +38,37 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             let storageRef = storage.reference(forURL: "gs://capgrab-d673e.appspot.com").child(userID!).child(imageName)
             let imageToUpload = uploadImage.image
             let imageData = UIImageJPEGRepresentation(imageToUpload!, 0.1)
-            storageRef.putData(imageData!, metadata: nil) { (metadata, error) in
-                guard metadata != nil else {
-                    print(error?.localizedDescription as Any)
-                    return
-                }
-                let ref: DatabaseReference!
-                ref = Database.database().reference()
-                ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let value = snapshot.value as? NSDictionary
-                    if (value?["photos"] as? [String]) != nil {
-                        self.imagePathArray = (value?["photos"] as? [String])!
+            let semaphore = DispatchSemaphore(value: 1)
+            DispatchQueue.global().async {
+                for i in 1...2 {
+                    semaphore.wait()
+                    if i == 1 {
+                        storageRef.putData(imageData!, metadata: nil) { (metadata, error) in
+                            guard metadata != nil else {
+                                print(error?.localizedDescription as Any)
+                                return
+                            }
+                            let ref: DatabaseReference!
+                            ref = Database.database().reference()
+                            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                                let value = snapshot.value as? NSDictionary
+                                if (value?["photos"] as? [String]) != nil {
+                                    self.imagePathArray = (value?["photos"] as? [String])!
+                                }
+                                let uploadedImageURL = (metadata?.downloadURL()?.absoluteString)!
+                                self.imagePathArray.append(uploadedImageURL)
+                                ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
+                            }){ (error) in
+                                print(error.localizedDescription)
+                            }
+                            semaphore.signal()
+                        }
+                    } else {
+                        self.performSegue(withIdentifier: "postUploadSegue", sender: self)
+                        semaphore.signal()
                     }
-                    let uploadedImageURL = (metadata?.downloadURL()?.absoluteString)!
-                    self.imagePathArray.append(uploadedImageURL)
-                    ref.child("users/\(userID ?? "")/photos").setValue(self.imagePathArray)
-                }){ (error) in
-                    print(error.localizedDescription)
                 }
             }
-            performSegue(withIdentifier: "postUploadSegue", sender: self)
         }
     }
     

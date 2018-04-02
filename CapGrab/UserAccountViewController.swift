@@ -166,7 +166,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             self.followingButton.setTitle("\(self.following.count) \nFollowing", for: [])
             
             let semaphore = DispatchSemaphore(value: 1)
-            DispatchQueue.global().async { [unowned self] in
+            DispatchQueue.global().async {
                 for path in self.imagePaths {
                     semaphore.wait()
                     let httpsReference = storage.reference(forURL: path)
