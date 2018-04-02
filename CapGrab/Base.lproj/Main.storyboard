@@ -163,21 +163,21 @@
                                     <constraint firstAttribute="height" constant="360" id="ni7-lO-QIG"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cOs-SK-YuG">
-                                    <size key="itemSize" width="90" height="90"/>
+                                    <size key="itemSize" width="120" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="itF-vV-lK2" customClass="UserImageViewController" customModule="CapGrab" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="17R-AU-xvf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -199,11 +199,15 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-W0-g3v">
                                 <rect key="frame" x="45" y="117" width="65" height="30"/>
-                                <state key="normal" title="Followers"/>
+                                <state key="normal" title="Followers">
+                                    <color key="titleColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-WH-tH5">
                                 <rect key="frame" x="265" y="117" width="65" height="30"/>
-                                <state key="normal" title="Following"/>
+                                <state key="normal" title="Following">
+                                    <color key="titleColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dR-ja-VsY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -319,7 +323,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.22530055046081543" green="0.48855751752853394" blue="0.97475689649581909" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7dR-ja-VsY" firstAttribute="leading" secondItem="0ZF-h0-nIL" secondAttribute="leading" id="47q-Jd-bRI"/>
                             <constraint firstAttribute="trailing" secondItem="3kR-WH-tH5" secondAttribute="trailing" constant="45" id="BAx-2m-Fdd"/>
@@ -328,7 +332,7 @@
                             <constraint firstItem="RBM-L8-wOG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LJU-W0-g3v" secondAttribute="trailing" constant="8" symbolic="YES" id="Elq-u1-osl"/>
                             <constraint firstItem="htw-HJ-1ZQ" firstAttribute="bottom" secondItem="0ZF-h0-nIL" secondAttribute="bottom" id="V5A-yV-2k9"/>
                             <constraint firstItem="RBM-L8-wOG" firstAttribute="centerX" secondItem="zxA-Qc-cL5" secondAttribute="centerX" id="ZNA-Sy-FRV"/>
-                            <constraint firstItem="3kR-WH-tH5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RBM-L8-wOG" secondAttribute="trailing" symbolic="YES" id="b3c-hB-oke"/>
+                            <constraint firstItem="3kR-WH-tH5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RBM-L8-wOG" secondAttribute="trailing" constant="8" symbolic="YES" id="b3c-hB-oke"/>
                             <constraint firstAttribute="bottomMargin" secondItem="3kR-WH-tH5" secondAttribute="bottom" constant="471" id="est-if-1hU"/>
                             <constraint firstItem="7dR-ja-VsY" firstAttribute="top" secondItem="zxA-Qc-cL5" secondAttribute="top" id="hZx-j7-aSR"/>
                             <constraint firstItem="htw-HJ-1ZQ" firstAttribute="leading" secondItem="zxA-Qc-cL5" secondAttribute="leading" id="hjs-00-vVF"/>

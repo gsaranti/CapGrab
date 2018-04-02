@@ -8,6 +8,8 @@
 //  https://medium.com/yay-its-erica/creating-a-collection-view-swift-3-77da2898bb7c
 //  https://stackoverflow.com/questions/28777943/hide-tab-bar-in-ios-swift-app
 //  https://stackoverflow.com/questions/46091920/how-to-make-a-loop-wait-until-task-is-finished
+//  https://stackoverflow.com/questions/38028013/how-to-set-uicollectionviewcell-width-and-height-programmatically
+//  https://stackoverflow.com/questions/24110762/swift-determine-ios-screen-size
 //
 
 import UIKit
@@ -15,7 +17,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class UserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class UserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
     
     var imagePaths = [String]()
     var imageArray = [UIImage]()
@@ -136,6 +138,13 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         singleImage.image = imageArray[indexPath.item]
         self.tabBarController?.tabBar.isHidden = true
         singleImageView.isHidden = false
+    }
+    
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = UIScreen.main.bounds.width / 3
+        return CGSize(width: width, height: width)
     }
     
     override func viewDidLoad() {
