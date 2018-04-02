@@ -145,6 +145,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         profilePicture.clipsToBounds = true
         singleImageView.isHidden = true
         self.captionTableView.delegate = self
+
         
         let storage = Storage.storage()
         let ref: DatabaseReference!
@@ -194,6 +195,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         }){ (error) in
             print(error.localizedDescription)
         }
+        userName.sizeToFit()
     }
     
 
