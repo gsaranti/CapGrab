@@ -38,13 +38,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             passwordCheck.isHidden = true
             profilePicture.isHidden = true
             selectPicture.isHidden = true
-            EnterButton.frame.origin = CGPoint(x: 132, y: 446)
+            EnterButton.frame.origin = CGPoint(x: 78, y: 446)
+            EnterButton.setTitle("Login", for: .normal)
         } else {
             userName.isHidden = false
             passwordCheck.isHidden = false
             profilePicture.isHidden = false
             selectPicture.isHidden = false
-            EnterButton.frame.origin = CGPoint(x: 132, y: 550)
+            EnterButton.frame.origin = CGPoint(x: 78, y: 550)
+            EnterButton.setTitle("Sign Up", for: .normal)
         }
     }
     
