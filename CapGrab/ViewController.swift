@@ -7,6 +7,8 @@
 //  https://firebase.google.com/docs/database/ios/read-and-write
 //  https://firebase.google.com/docs/storage/ios/create-reference
 //  https://www.youtube.com/watch?v=OEUeGuBnNAs&t=0s
+//  https://www.youtube.com/watch?v=_sBUwR128m4
+//  https://www.youtube.com/watch?v=NxLAc1nnNVs&t=290s
 //
 
 import UIKit

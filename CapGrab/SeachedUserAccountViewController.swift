@@ -202,7 +202,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                     self.imagePaths = (value?["photos"] as? [String])!
                 }
                 let semaphore = DispatchSemaphore(value: 1)
-                DispatchQueue.global().async { [unowned self] in
+                DispatchQueue.global().async { 
                     for path in self.imagePaths {
                         semaphore.wait()
                         let httpsReference = storage.reference(forURL: path)
@@ -217,7 +217,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                             }
                         })
                     }
-            }
+                }
             }
             
             let profilePicturePath = (value?["profilePicture"] as! String)
