@@ -394,7 +394,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnL-je-UrQ">
-                                                    <rect key="frame" x="296" y="2" width="46" height="30"/>
+                                                    <rect key="frame" x="285" y="2" width="75" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
@@ -805,6 +805,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qEH-sb-rOI"/>
-        <segue reference="2ew-Qu-I9c"/>
+        <segue reference="zU5-D9-ZRN"/>
     </inferredMetricsTieBreakers>
 </document>

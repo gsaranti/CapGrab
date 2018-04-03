@@ -55,7 +55,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         let ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
-        ref.child("photos").child(userID!).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("photos").child(searchedUserID).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             var captionAmount = String()
             var amountOfCaptions = Int()
@@ -70,9 +70,9 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             }
             let caption = newCaption
             
-            ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["caption": caption])
+            ref.child("photos").child(self.searchedUserID).child(specificImage).child(captionAmount).setValue(["caption": caption])
             
-            ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
+            ref.child("photos").child(self.searchedUserID).child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
             
             self.captions.append(caption!)
             self.captionTableView.reloadData()
