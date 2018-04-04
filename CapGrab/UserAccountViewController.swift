@@ -24,8 +24,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var followers = [String]()
     var following = [String]()
     var captions = [String]()
-    var upVotes = [String]()
-    var downVotes = [String]()
+    var postedBy = [String]()
+    var upVotes = [Any]()
+    var downVotes = [Any]()
     var singleImageForCaption = Int()
     var ready = true
 
@@ -67,6 +68,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
 
             ref.child("photos").child(userID ?? "").child(specificImage).child(captionAmount).setValue(["caption": caption])
             
+            ref.child("photos/\(userID ?? "")/\(specificImage)/\(captionAmount)/postedBy").setValue(userID)
+            
             ref.child("photos").child(userID ?? "").child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
             
             self.captions.append(caption!)
@@ -91,8 +94,13 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let userID = Auth.auth().currentUser?.uid
         let cell = tableView.dequeueReusableCell(withIdentifier: "captionCell", for: indexPath) as! CaptionTableViewCell
         cell.captionText.text = self.captions[indexPath.item]
+        cell.postedBy = self.postedBy[indexPath.item]
+        cell.userID = userID!
+        cell.specificImage = String(singleImageForCaption)
+        cell.specificCaption = String(indexPath.item + 1)
         cell.captionText.numberOfLines = Int(Double(self.captions[indexPath.item].count / 2) * 2.5)
         if(self.captions[indexPath.item].count > 60) {
             self.captionTableView.rowHeight = (CGFloat(Double(self.captions[indexPath.item].count / 2) * 2.0))
@@ -131,6 +139,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     let captionNumber = String(i)
                     let singleCaption = value![captionNumber]! as! NSDictionary
                     self.captions.append(singleCaption["caption"]! as! String)
+                    self.postedBy.append(singleCaption["postedBy"]! as! String)
                 }
             }
             self.captionTableView.reloadData()

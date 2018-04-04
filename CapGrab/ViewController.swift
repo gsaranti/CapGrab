@@ -75,7 +75,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         return
                     }
                 }
-                self.performSegue(withIdentifier:"loginSegue",sender: self)
+                self.performSegue(withIdentifier:"loginSegue", sender: self)
             })
         } else {
             if password.text != passwordCheck.text {
@@ -123,7 +123,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         return
                     }
                 }
-                self.performSegue(withIdentifier:"loginSegue",sender: self)
+                self.performSegue(withIdentifier:"loginSegue", sender: self)
             })
         }
     }
