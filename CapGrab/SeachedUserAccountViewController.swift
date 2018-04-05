@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class SeachedUserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class SeachedUserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
     
     var searchedUserID = String()
     var imagePaths = [String]()
@@ -161,6 +161,12 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         })
         singleImage.image = imageArray[indexPath.item]
         singleImageView.isHidden = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = UIScreen.main.bounds.width / 3
+        return CGSize(width: width, height: width)
     }
     
     @IBAction func backToSearch(_ sender: Any) {
