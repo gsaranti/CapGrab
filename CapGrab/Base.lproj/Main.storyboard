@@ -214,6 +214,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="47a-qB-O0k">
                                         <rect key="frame" x="0.0" y="66" width="375" height="352"/>
+                                        <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="352" id="HLD-Ce-I3W"/>
                                         </constraints>
@@ -227,7 +228,7 @@
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fma-TA-isv">
                                         <rect key="frame" x="0.0" y="392" width="375" height="225"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="225" id="ZjF-Sx-YZ2"/>
                                         </constraints>
@@ -275,6 +276,7 @@
                                                         <constraint firstItem="Pcf-AT-dxU" firstAttribute="top" secondItem="MNm-ue-NXD" secondAttribute="topMargin" constant="20" id="xxQ-2C-p2v"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="captionText" destination="kF9-9S-Qt1" id="s07-zH-dMd"/>
                                                     <outlet property="downVoteButton" destination="Pcf-AT-dxU" id="0Hd-es-vVw"/>
@@ -304,7 +306,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="awu-mF-Fy0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Twl-kp-Yly" secondAttribute="trailing" constant="8" symbolic="YES" id="1lP-NV-TTv"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W4D-uW-ox5" secondAttribute="trailing" constant="20" symbolic="YES" id="DoT-j6-AdM"/>

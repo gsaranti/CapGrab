@@ -77,6 +77,8 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             ref.child("photos").child(self.searchedUserID).child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
             
             self.captions.append(caption!)
+            self.upVotes.append([])
+            self.downVotes.append([])
             self.captionTableView.reloadData()
             
         }){ (error) in
@@ -122,17 +124,21 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         cell.captionText.text = self.captions[indexPath.item]
         cell.postedBy = self.postedBy[indexPath.item]
         cell.userID = self.currentUserID!
-        cell.upVotes = self.upVotes[indexPath.item]
-        if(self.upVotes[indexPath.item].contains(currentUserID!)) {
-            cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        } else {
-            cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        if(self.upVotes.count != 0) {
+            cell.upVotes = self.upVotes[indexPath.item]
+            if(self.upVotes[indexPath.item].contains(currentUserID!)) {
+                cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            } else {
+                cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            }
         }
-        cell.downVotes = self.downVotes[indexPath.item]
-        if(self.downVotes[indexPath.item].contains(currentUserID!)) {
-            cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        } else {
-            cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        if(self.downVotes.count != 0) {
+            cell.downVotes = self.downVotes[indexPath.item]
+            if(self.downVotes[indexPath.item].contains(currentUserID!)) {
+                cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            } else {
+                cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            }
         }
         cell.searchedUserID = self.searchedUserID
         cell.specificImage = String(singleImageForCaption)
@@ -162,6 +168,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         self.captions.removeAll()
         self.upVotes.removeAll()
         self.downVotes.removeAll()
+        self.postedBy.removeAll()
         singleImageForCaption = indexPath.item
         let specificImage = String(singleImageForCaption)
         
