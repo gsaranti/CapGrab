@@ -57,6 +57,7 @@ class CaptionTableViewCell: UITableViewCell {
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
             }
+            print(self.upVotes)
         })
     }
     
@@ -64,6 +65,7 @@ class CaptionTableViewCell: UITableViewCell {
         let ref: DatabaseReference
         ref = Database.database().reference()
         var capGrabScore = Int()
+        print(self.downVotes)
         
         ref.child("users").child(self.postedBy).child("capScore").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -106,25 +108,6 @@ class CaptionTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        let ref: DatabaseReference
-        ref = Database.database().reference()
-        ref.child("photos").child(userID).child(specificImage).child(specificCaption).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            if(value?["upVotes"] as? [String]) != nil {
-                self.upVotes = (value?["upVotes"] as? [String])!
-                if(self.upVotes.contains(self.userID)) {
-                    self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-                }
-            }
-            if(value?["downVotes"] as? [String]) != nil {
-                self.downVotes = (value?["downVotes"] as? [String])!
-                if(self.downVotes.contains(self.userID)) {
-                    self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-                }
-            }
-        })
-        
-
         // Configure the view for the selected state
     }
 

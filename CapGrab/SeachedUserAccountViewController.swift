@@ -25,8 +25,9 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     var lastViewController = String()
     var singleImageForCaption = Int()
     var captions = [String]()
-    var upVotes = [String]()
-    var downVotes = [String]()
+    var upVotes = [[String]]()
+    var downVotes = [[String]]()
+    var postedBy = [String]()
     
     var isFollower = false
     var hasRequested = false
@@ -55,6 +56,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         let ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
+        self.postedBy.append(userID!)
         ref.child("photos").child(searchedUserID).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             var captionAmount = String()
@@ -69,9 +71,9 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                 captionAmount = String(previousAmount)
             }
             let caption = newCaption
-            
             ref.child("photos").child(self.searchedUserID).child(specificImage).child(captionAmount).setValue(["caption": caption])
             
+                ref.child("photos/\(self.searchedUserID)/\(specificImage)/\(captionAmount)/postedBy").setValue(userID)
             ref.child("photos").child(self.searchedUserID).child(specificImage).child("amountOfCaptions").setValue(["amountOfCaptions" : amountOfCaptions])
             
             self.captions.append(caption!)
@@ -118,6 +120,23 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCaptionCell", for: indexPath) as! SearchedUserCaptionTableViewCell
         cell.captionText.text = self.captions[indexPath.item]
+        cell.postedBy = self.postedBy[indexPath.item]
+        cell.userID = self.currentUserID!
+        cell.upVotes = self.upVotes[indexPath.item]
+        if(self.upVotes[indexPath.item].contains(currentUserID!)) {
+            cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        } else {
+            cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        }
+        cell.downVotes = self.downVotes[indexPath.item]
+        if(self.downVotes[indexPath.item].contains(currentUserID!)) {
+            cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        } else {
+            cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        }
+        cell.searchedUserID = self.searchedUserID
+        cell.specificImage = String(singleImageForCaption)
+        cell.specificCaption = String(indexPath.item + 1)
         cell.captionText.numberOfLines = Int(Double(self.captions[indexPath.item].count / 2) * 2.5)
         if(self.captions[indexPath.item].count > 60) {
             self.captionTableView.rowHeight = (CGFloat(Double(self.captions[indexPath.item].count / 2) * 2.0))
@@ -155,6 +174,17 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
                     let captionNumber = String(i)
                     let singleCaption = value![captionNumber]! as! NSDictionary
                     self.captions.append(singleCaption["caption"]! as! String)
+                    self.postedBy.append(singleCaption["postedBy"]! as! String)
+                    if(singleCaption["upVotes"] as? [String] != nil) {
+                        self.upVotes.append(singleCaption["upVotes"] as! [String])
+                    } else {
+                        self.upVotes.append([])
+                    }
+                    if(singleCaption["downVotes"] as? [String] != nil) {
+                        self.downVotes.append(singleCaption["downVotes"] as! [String])
+                    } else {
+                        self.downVotes.append([])
+                    }
                 }
             }
             self.captionTableView.reloadData()

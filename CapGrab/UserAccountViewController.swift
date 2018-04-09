@@ -25,8 +25,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var following = [String]()
     var captions = [String]()
     var postedBy = [String]()
-    var upVotes = [Any]()
-    var downVotes = [Any]()
+    var upVotes = [[String]]()
+    var downVotes = [[String]]()
     var singleImageForCaption = Int()
     var ready = true
 
@@ -99,6 +99,18 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         let cell = tableView.dequeueReusableCell(withIdentifier: "captionCell", for: indexPath) as! CaptionTableViewCell
         cell.captionText.text = self.captions[indexPath.item]
         cell.postedBy = self.postedBy[indexPath.item]
+        cell.upVotes = self.upVotes[indexPath.item]
+        if(self.upVotes[indexPath.item].contains(userID!)) {
+            cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        } else {
+            cell.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        }
+        cell.downVotes = self.downVotes[indexPath.item]
+        if(self.downVotes[indexPath.item].contains(userID!)) {
+            cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        } else {
+            cell.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        }
         cell.userID = userID!
         cell.specificImage = String(singleImageForCaption)
         cell.specificCaption = String(indexPath.item + 1)
@@ -108,7 +120,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         } else {
             self.captionTableView.rowHeight = 60.0
         }
-        
+    
         return cell
     }
     
@@ -127,6 +139,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         self.upVotes.removeAll()
         self.downVotes.removeAll()
         self.captions.removeAll()
+        self.postedBy.removeAll()
         singleImageForCaption = indexPath.item
         let specificImage = String(singleImageForCaption)
         
@@ -141,6 +154,16 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     let singleCaption = value![captionNumber]! as! NSDictionary
                     self.captions.append(singleCaption["caption"]! as! String)
                     self.postedBy.append(singleCaption["postedBy"]! as! String)
+                    if(singleCaption["upVotes"] as? [String] != nil) {
+                        self.upVotes.append(singleCaption["upVotes"] as! [String])
+                    } else {
+                        self.upVotes.append([])
+                    }
+                    if(singleCaption["downVotes"] as? [String] != nil) {
+                        self.downVotes.append(singleCaption["downVotes"] as! [String])
+                    } else {
+                        self.downVotes.append([])
+                    }
                 }
             }
             self.captionTableView.reloadData()

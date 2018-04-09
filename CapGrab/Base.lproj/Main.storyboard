@@ -574,7 +574,7 @@
                                     <action selector="userRelationAction:" destination="fkP-xm-AOU" eventType="touchUpInside" id="17y-jV-jAo"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqE-pG-2Ho">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqE-pG-2Ho">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKU-A3-Bbv">
@@ -617,10 +617,16 @@
                                                                 <constraint firstAttribute="width" constant="30" id="hO6-c6-5Yc"/>
                                                             </constraints>
                                                             <state key="normal" title="Up"/>
+                                                            <connections>
+                                                                <action selector="upVote:" destination="rZb-rQ-ciq" eventType="touchUpInside" id="pT1-pa-A90"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzX-RC-SX5">
                                                             <rect key="frame" x="330" y="26" width="39" height="30"/>
                                                             <state key="normal" title="Down"/>
+                                                            <connections>
+                                                                <action selector="downVote:" destination="rZb-rQ-ciq" eventType="touchUpInside" id="2Pb-NU-7pS"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -636,6 +642,8 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="captionText" destination="hx6-fz-ypZ" id="zhZ-G7-XhK"/>
+                                                    <outlet property="downVoteButton" destination="gzX-RC-SX5" id="gqk-jF-QxW"/>
+                                                    <outlet property="upVoteButton" destination="oMS-jn-LvL" id="7q7-3x-X31"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
