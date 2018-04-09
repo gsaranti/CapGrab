@@ -21,13 +21,22 @@ class CaptionTableViewCell: UITableViewCell {
     var specificImage = String()
     var specificCaption = String()
     var upVotes = [String]()
+    var downVotes = [String]()
  
     
     @IBAction func upVoteAction(_ sender: Any) {
         let ref: DatabaseReference
         ref = Database.database().reference()
-    
-        if(self.upVotes.contains(self.userID)) {
+        
+        if(self.downVotes.contains(self.userID)) {
+            let index = self.downVotes.index(of: self.userID)
+            self.downVotes.remove(at: index!)
+            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            self.upVotes.append(self.userID)
+            upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+        } else if(self.upVotes.contains(self.userID)) {
             let index = self.upVotes.index(of: self.userID)
             self.upVotes.remove(at: index!)
             upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -40,7 +49,27 @@ class CaptionTableViewCell: UITableViewCell {
     }
     
     @IBAction func downVoteAction(_ sender: Any) {
-        print("bye")
+        let ref: DatabaseReference
+        ref = Database.database().reference()
+        
+        if(self.upVotes.contains(self.userID)) {
+            let index = self.upVotes.index(of: self.userID)
+            self.upVotes.remove(at: index!)
+            upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            self.downVotes.append(self.userID)
+            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+        } else if(self.downVotes.contains(self.userID)) {
+            let index = self.downVotes.index(of: self.userID)
+            self.downVotes.remove(at: index!)
+            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+        } else {
+            self.downVotes.append(self.userID)
+            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+        }
     }
     
     
@@ -61,6 +90,12 @@ class CaptionTableViewCell: UITableViewCell {
                 self.upVotes = (value?["upVotes"] as? [String])!
                 if(self.upVotes.contains(self.userID)) {
                     self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+                }
+            }
+            if(value?["downVotes"] as? [String]) != nil {
+                self.downVotes = (value?["downVotes"] as? [String])!
+                if(self.downVotes.contains(self.userID)) {
+                    self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
                 }
             }
         })

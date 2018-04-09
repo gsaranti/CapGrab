@@ -51,6 +51,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         let ref: DatabaseReference!
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
+        self.postedBy.append(userID!)
         ref.child("photos").child(userID!).child(specificImage).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             var captionAmount = String()
@@ -97,7 +98,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         let userID = Auth.auth().currentUser?.uid
         let cell = tableView.dequeueReusableCell(withIdentifier: "captionCell", for: indexPath) as! CaptionTableViewCell
         cell.captionText.text = self.captions[indexPath.item]
-        cell.postedBy = self.postedBy[indexPath.item]
+        //cell.postedBy = self.postedBy[indexPath.item]
         cell.userID = userID!
         cell.specificImage = String(singleImageForCaption)
         cell.specificCaption = String(indexPath.item + 1)
