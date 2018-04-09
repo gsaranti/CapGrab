@@ -27,49 +27,73 @@ class CaptionTableViewCell: UITableViewCell {
     @IBAction func upVoteAction(_ sender: Any) {
         let ref: DatabaseReference
         ref = Database.database().reference()
+        var capGrabScore = Int()
         
-        if(self.downVotes.contains(self.userID)) {
-            let index = self.downVotes.index(of: self.userID)
-            self.downVotes.remove(at: index!)
-            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-            self.upVotes.append(self.userID)
-            upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
-        } else if(self.upVotes.contains(self.userID)) {
-            let index = self.upVotes.index(of: self.userID)
-            self.upVotes.remove(at: index!)
-            upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
-        } else {
-            self.upVotes.append(self.userID)
-            upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
-        }
+        ref.child("users").child(self.postedBy).child("capScore").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            capGrabScore = (snapshot.value as? Int)!
+            
+            if(self.downVotes.contains(self.userID)) {
+                capGrabScore = capGrabScore + 2
+                let index = self.downVotes.index(of: self.userID)
+                self.downVotes.remove(at: index!)
+                self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                self.upVotes.append(self.userID)
+                self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+                ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+            } else if(self.upVotes.contains(self.userID)) {
+                capGrabScore = capGrabScore - 1
+                let index = self.upVotes.index(of: self.userID)
+                self.upVotes.remove(at: index!)
+                self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+            } else {
+                capGrabScore = capGrabScore + 1
+                self.upVotes.append(self.userID)
+                self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+                ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+            }
+        })
     }
     
     @IBAction func downVoteAction(_ sender: Any) {
         let ref: DatabaseReference
         ref = Database.database().reference()
+        var capGrabScore = Int()
         
-        if(self.upVotes.contains(self.userID)) {
-            let index = self.upVotes.index(of: self.userID)
-            self.upVotes.remove(at: index!)
-            upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-            self.downVotes.append(self.userID)
-            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
-        } else if(self.downVotes.contains(self.userID)) {
-            let index = self.downVotes.index(of: self.userID)
-            self.downVotes.remove(at: index!)
-            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
-        } else {
-            self.downVotes.append(self.userID)
-            downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-            ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
-        }
+        ref.child("users").child(self.postedBy).child("capScore").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            capGrabScore = (snapshot.value as? Int)!
+            
+            if(self.upVotes.contains(self.userID)) {
+                capGrabScore = capGrabScore - 2
+                let index = self.upVotes.index(of: self.userID)
+                self.upVotes.remove(at: index!)
+                self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                self.downVotes.append(self.userID)
+                self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+                ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+            } else if(self.downVotes.contains(self.userID)) {
+                capGrabScore = capGrabScore + 1
+                let index = self.downVotes.index(of: self.userID)
+                self.downVotes.remove(at: index!)
+                self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+            } else {
+                capGrabScore = capGrabScore - 1
+                self.downVotes.append(self.userID)
+                self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+                ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
+                ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+            }
+        })
     }
     
     
