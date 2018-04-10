@@ -43,6 +43,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var captionTableView: UITableView!
     @IBOutlet weak var newCaptionText: UITextField!
     
+    @IBOutlet weak var capScore: UILabel!
     
     
     @IBAction func addNewCaption(_ sender: Any) {
@@ -205,6 +206,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             if (value?["photos"] as? [String]) != nil {
                 self.imagePaths = (value?["photos"] as? [String])!
             }
+            self.capScore.text = String(value?["capScore"] as! Int)
+
             if (value?["followers"] as? [String]) != nil {
                 self.followers = (value?["followers"] as? [String])!
             }

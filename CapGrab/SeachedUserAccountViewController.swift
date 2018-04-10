@@ -44,6 +44,8 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     
     @IBOutlet weak var singleImageView: UIView!
     
+    @IBOutlet weak var capScore: UILabel!
+    
     @IBAction func hideSingleImageView(_ sender: Any) {
         singleImageView.isHidden = true
         self.captions.removeAll()
@@ -217,6 +219,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
+            self.capScore.text = String(value?["capScore"] as! Int)
             
             if (value?["followers"] as? [String]) != nil {
                 self.followersArray = (value?["followers"] as? [String])!
