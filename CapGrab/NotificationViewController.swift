@@ -50,6 +50,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
             cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item])"
             cell.notificationButton.setTitle("Accept", for: [])
+            cell.notificationButton.isHidden = false
             if(self.currentUserFollowers.count >= 20) {
                 cell.notificationButton.isEnabled = false
             }
