@@ -115,15 +115,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     let notifications = [Any]()
                     ref.child("users").child((user?.uid)!).setValue(["userName": self.userName.text!, "email": self.email.text!, "capScore": 0, "fullName": "", "profilePicture": profilePictureURL!, "photos": photoPaths, "followers": followers, "following": following, "followRequests": followRequests, "notifications": notifications])
                 })
-            })
-            Auth.auth().signIn(withEmail: email.text!, password: password.text!, completion: { (user, error) in
-                if error != nil{
-                    if let signinError = error?.localizedDescription {
-                        print(signinError)
-                        return
+                Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
+                    if error != nil{
+                        if let signinError = error?.localizedDescription {
+                            print(signinError)
+                            return
+                        }
                     }
-                }
-                self.performSegue(withIdentifier:"loginSegue", sender: self)
+                    self.performSegue(withIdentifier:"loginSegue", sender: self)
+                })
             })
         }
     }

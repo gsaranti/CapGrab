@@ -42,17 +42,30 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var singleImage: UIImageView!
     @IBOutlet weak var captionTableView: UITableView!
     @IBOutlet weak var newCaptionText: UITextField!
-    
     @IBOutlet weak var capScore: UILabel!
     @IBOutlet weak var settingsView: UIView!
     
+    @IBAction func logout(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@:", signOutError)
+        }
+        performSegue(withIdentifier: "logoutSegue", sender: self)
+    }
+    
+    @IBAction func hideSettings(_ sender: Any) {
+        settingsView.isHidden = true
+        settingsView.layer.zPosition = 0
+    }
+    
     
     @IBAction func settings(_ sender: Any) {
-        
+        settingsView.isHidden = false
+        settingsView.layer.zPosition = 1
     }
     
-    @IBAction func logoutButton(_ sender: Any) {
-    }
     
     @IBAction func addNewCaption(_ sender: Any) {
         let specificImage = String(singleImageForCaption)
@@ -202,8 +215,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         profilePicture.clipsToBounds = true
         singleImageView.isHidden = true
         self.captionTableView.delegate = self
+        settingsView.isHidden = true
+        settingsView.layer.cornerRadius = 20
 
-        
         let storage = Storage.storage()
         let ref: DatabaseReference!
         ref = Database.database().reference()
