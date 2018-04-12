@@ -18,9 +18,10 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     
     var currentUserFollowRequests = [String]()
     var currentUserFollowRequestUserNames = [String]()
+    var currentUserNotificationUserNames = [String]()
     var currentUserFollowers = [String]()
     var requestUserFollowing = [String]()
-    var notifications = [Any]()
+    var notifications = [String]()
     var segueUserID = String()
     
     @IBAction func captionOrFollow(_ sender: Any) {
@@ -33,7 +34,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if notificationsSegmentControl.selectedSegmentIndex == 0 {
-            return notifications.count
+            return currentUserNotificationUserNames.count
         } else {
             return currentUserFollowRequests.count
         }
@@ -42,7 +43,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if notificationsSegmentControl.selectedSegmentIndex == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
-            cell.notificationMessage.text = "\(notifications[indexPath.item]) captioned your post!"
+            cell.notificationMessage.text = "\(currentUserNotificationUserNames[indexPath.item]) captioned your post!"
             cell.notificationButton.isHidden = true
             return cell
         } else {
@@ -70,8 +71,10 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        segueUserID = currentUserFollowRequests[indexPath.item]
-        self.performSegue(withIdentifier: "followNotificationSegue", sender: self)
+        if notificationsSegmentControl.selectedSegmentIndex == 1 {
+            segueUserID = currentUserFollowRequests[indexPath.item]
+            self.performSegue(withIdentifier: "followNotificationSegue", sender: self)
+        }
     }
     
     override func viewDidLoad() {
@@ -85,8 +88,8 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
             if (value?["followRequests"] as? [String]) != nil {
                 self.currentUserFollowRequests = (value?["followRequests"] as? [String])!
             }
-            if (value?["notifications"] as? [Any]) != nil {
-                self.notifications = (value?["notifications"] as? [Any])!
+            if (value?["notifications"] as? [String]) != nil {
+                self.notifications = (value?["notifications"] as? [String])!
             }
             if (value?["followers"] as? [String]) != nil {
                 self.currentUserFollowers = (value?["followers"] as? [String])!
@@ -100,6 +103,18 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
                 }){ (error) in
                     print(error.localizedDescription)
                 }
+            }
+            for userIDs in self.notifications {
+                
+                ref.child("users").child(userIDs).child("userName").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    self.currentUserNotificationUserNames.append((snapshot.value as? String)!)
+                    self.notificationsTableView.reloadData()
+
+                }){ (error) in
+                    print(error.localizedDescription)
+                }
+
             }
         }){ (error) in
             print(error.localizedDescription)

@@ -44,7 +44,15 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var newCaptionText: UITextField!
     
     @IBOutlet weak var capScore: UILabel!
+    @IBOutlet weak var settingsView: UIView!
     
+    
+    @IBAction func settings(_ sender: Any) {
+        
+    }
+    
+    @IBAction func logoutButton(_ sender: Any) {
+    }
     
     @IBAction func addNewCaption(_ sender: Any) {
         let specificImage = String(singleImageForCaption)

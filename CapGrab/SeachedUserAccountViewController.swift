@@ -28,6 +28,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     var upVotes = [[String]]()
     var downVotes = [[String]]()
     var postedBy = [String]()
+    var notificationArray = [String]()
     
     var isFollower = false
     var hasRequested = false
@@ -84,6 +85,18 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             self.captionTableView.reloadData()
             
         }){ (error) in
+            print(error.localizedDescription)
+        }
+        ref.child("users").child(searchedUserID).child("notifications").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if (snapshot.value as? [String]) != nil {
+                self.notificationArray = (snapshot.value as? [String])!
+            }
+            
+            self.notificationArray.insert(self.currentUserID!, at: 0)
+            print(self.notificationArray)
+            ref.child("users/\(self.searchedUserID)/notifications").setValue(self.notificationArray)
+        }) { (error) in
             print(error.localizedDescription)
         }
         self.captionText.text?.removeAll()
