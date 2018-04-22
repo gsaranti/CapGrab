@@ -45,6 +45,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var capScore: UILabel!
     @IBOutlet weak var settingsView: UIView!
     
+
+    
+    
     @IBAction func logout(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -57,13 +60,13 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBAction func hideSettings(_ sender: Any) {
         settingsView.isHidden = true
-        settingsView.layer.zPosition = 0
+        //settingsView.layer.zPosition = 0
     }
     
     
     @IBAction func settings(_ sender: Any) {
         settingsView.isHidden = false
-        settingsView.layer.zPosition = 1
+        //settingsView.layer.zPosition = 1
     }
     
     
@@ -148,6 +151,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         } else {
             self.captionTableView.rowHeight = 60.0
         }
+        cell.captionScore.text = String(self.upVotes[indexPath.item].count - self.downVotes[indexPath.item].count)
     
         return cell
     }

@@ -14,6 +14,7 @@ import FirebaseDatabase
 class CaptionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var captionText: UILabel!
+    @IBOutlet weak var captionScore: UILabel!
     @IBOutlet weak var upVoteButton: UIButton!
     @IBOutlet weak var downVoteButton: UIButton!
     var postedBy = String()
@@ -43,6 +44,7 @@ class CaptionTableViewCell: UITableViewCell {
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+                self.captionScore.text = String(Int(self.captionScore.text!)! + 2)
             } else if(self.upVotes.contains(self.userID)) {
                 capGrabScore = capGrabScore - 1
                 let index = self.upVotes.index(of: self.userID)
@@ -50,12 +52,14 @@ class CaptionTableViewCell: UITableViewCell {
                 self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+                self.captionScore.text = String(Int(self.captionScore.text!)! - 1)
             } else {
                 capGrabScore = capGrabScore + 1
                 self.upVotes.append(self.userID)
                 self.upVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
+                self.captionScore.text = String(Int(self.captionScore.text!)! + 1)
             }
             print(self.upVotes)
         })
@@ -81,6 +85,7 @@ class CaptionTableViewCell: UITableViewCell {
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+                self.captionScore.text = String(Int(self.captionScore.text!)! - 2)
             } else if(self.downVotes.contains(self.userID)) {
                 capGrabScore = capGrabScore + 1
                 let index = self.downVotes.index(of: self.userID)
@@ -88,12 +93,14 @@ class CaptionTableViewCell: UITableViewCell {
                 self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+                self.captionScore.text = String(Int(self.captionScore.text!)! + 1)
             } else {
                 capGrabScore = capGrabScore - 1
                 self.downVotes.append(self.userID)
                 self.downVoteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
                 ref.child("users/\(self.postedBy)/capScore").setValue(capGrabScore)
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/downVotes").setValue(self.downVotes)
+                self.captionScore.text = String(Int(self.captionScore.text!)! - 1)
             }
         })
     }
