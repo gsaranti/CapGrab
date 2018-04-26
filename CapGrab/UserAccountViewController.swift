@@ -229,10 +229,12 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
+            self.userName.textColor = UIColor.white
             if (value?["photos"] as? [String]) != nil {
                 self.imagePaths = (value?["photos"] as? [String])!
             }
-            self.capScore.text = String(value?["capScore"] as! Int)
+            self.capScore.text = "CapScore: \(String(value?["capScore"] as! Int))"
+            self.capScore.textColor = UIColor.white
 
             if (value?["followers"] as? [String]) != nil {
                 self.followers = (value?["followers"] as? [String])!
@@ -242,6 +244,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             }
             self.followersButton.setTitle("\(self.followers.count) \nFollowers", for: [])
             self.followingButton.setTitle("\(self.following.count) \nFollowing", for: [])
+            self.followersButton.layer.cornerRadius = 5.0
+            self.followingButton.layer.cornerRadius = 5.0
             
             let semaphore = DispatchSemaphore(value: 1)
             DispatchQueue.global().async {

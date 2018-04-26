@@ -18,6 +18,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var uploadImage: UIImageView!
     @IBOutlet weak var browseButton: UIButton!
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var noPicture: UIImageView!
     
     let imageLibrary = UIImagePickerController()
     var imagePathArray = [String]()
@@ -29,6 +30,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         uploadImage.image = image
+        noPicture.isHidden = true
         dismiss(animated: true, completion: nil)
     }
     
