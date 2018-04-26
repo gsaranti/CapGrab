@@ -31,6 +31,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         uploadImage.image = image
         noPicture.isHidden = true
+        uploadButton.isEnabled = true
         dismiss(animated: true, completion: nil)
     }
     
@@ -81,6 +82,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         imageLibrary.delegate = self
         imageLibrary.sourceType = .photoLibrary
+        uploadButton.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {

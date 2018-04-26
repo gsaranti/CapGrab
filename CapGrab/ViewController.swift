@@ -10,6 +10,7 @@
 //  https://www.youtube.com/watch?v=OEUeGuBnNAs&t=0s
 //  https://www.youtube.com/watch?v=_sBUwR128m4
 //  https://www.youtube.com/watch?v=NxLAc1nnNVs&t=290s
+//  https://stackoverflow.com/questions/41537721/how-to-hide-keyboard-when-return-key-is-hit-swift/41537966?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 //
 
 import UIKit
@@ -17,7 +18,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var LoginOrSignUp: UISegmentedControl!
     
@@ -129,8 +130,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    func textFieldShouldReturn(_ textFields: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        email.delegate = self
+        userName.delegate = self
+        password.delegate = self
+        passwordCheck.delegate = self
         
         userName.isHidden = true
         profilePicture.isHidden = true

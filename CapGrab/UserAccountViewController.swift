@@ -17,7 +17,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class UserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
+class UserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate  {
     
     var imagePaths = [String]()
     var imageArray = [UIImage]()
@@ -28,8 +28,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var upVotes = [[String]]()
     var downVotes = [[String]]()
     var singleImageForCaption = Int()
-    var ready = true
-
     
     @IBOutlet weak var followingButton: UIButton!
     @IBOutlet weak var followersButton: UIButton!
@@ -45,9 +43,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var capScore: UILabel!
     @IBOutlet weak var settingsView: UIView!
     
-
-    
-    
     @IBAction func logout(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -60,15 +55,11 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBAction func hideSettings(_ sender: Any) {
         settingsView.isHidden = true
-        //settingsView.layer.zPosition = 0
     }
-    
     
     @IBAction func settings(_ sender: Any) {
         settingsView.isHidden = false
-        //settingsView.layer.zPosition = 1
     }
-    
     
     @IBAction func addNewCaption(_ sender: Any) {
         let specificImage = String(singleImageForCaption)
@@ -111,6 +102,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     @IBAction func hideSingleImageView(_ sender: Any) {
+        newCaptionText.endEditing(true)
         singleImageView.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
         self.captions.removeAll()
@@ -212,13 +204,19 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         return CGSize(width: width, height: width)
     }
     
+    func textFieldShouldReturn(_ textFields: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profilePicture.layer.cornerRadius = 32.0
+        profilePicture.layer.cornerRadius = 38
         profilePicture.clipsToBounds = true
         singleImageView.isHidden = true
         self.captionTableView.delegate = self
+        newCaptionText.delegate = self
         settingsView.isHidden = true
         settingsView.layer.cornerRadius = 20
 

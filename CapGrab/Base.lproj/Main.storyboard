@@ -164,7 +164,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="htw-HJ-1ZQ">
                                 <rect key="frame" x="0.0" y="258" width="375" height="360"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.92146831750869751" green="0.92162626981735229" blue="0.92145836353302002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="ni7-lO-QIG"/>
                                 </constraints>
@@ -203,6 +203,30 @@
                                     <outlet property="delegate" destination="tgt-nx-jpV" id="hfL-Uh-hlN"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-W0-g3v">
+                                <rect key="frame" x="40" y="117" width="85" height="30"/>
+                                <color key="backgroundColor" red="0.23865380019999999" green="0.39448305519999999" blue="0.779395583" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Followers">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-WH-tH5">
+                                <rect key="frame" x="250" y="117" width="85" height="30"/>
+                                <color key="backgroundColor" red="0.23865380018926663" green="0.39448305519922472" blue="0.77939558301480294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Following">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydX-FB-MMX">
+                                <rect key="frame" x="281" y="30" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="settings:" destination="tgt-nx-jpV" eventType="touchUpInside" id="HTh-Bk-JjF"/>
+                                </connections>
+                            </button>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rw-er-QeI">
                                 <rect key="frame" x="68" y="150" width="239" height="163"/>
                                 <subviews>
@@ -233,30 +257,6 @@
                                     <constraint firstAttribute="bottom" secondItem="pJu-WK-hQj" secondAttribute="bottom" constant="100" id="gck-y4-lgb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-W0-g3v">
-                                <rect key="frame" x="40" y="117" width="85" height="30"/>
-                                <color key="backgroundColor" red="0.23865380019999999" green="0.39448305519999999" blue="0.779395583" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Followers">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-WH-tH5">
-                                <rect key="frame" x="250" y="117" width="85" height="30"/>
-                                <color key="backgroundColor" red="0.23865380018926663" green="0.39448305519922472" blue="0.77939558301480294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Following">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydX-FB-MMX">
-                                <rect key="frame" x="281" y="30" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="settings:" destination="tgt-nx-jpV" eventType="touchUpInside" id="HTh-Bk-JjF"/>
-                                </connections>
-                            </button>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dR-ja-VsY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
