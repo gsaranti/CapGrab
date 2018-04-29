@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class SeachedUserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
+class SeachedUserAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var searchedUserID = String()
     var imagePaths = [String]()
@@ -42,12 +42,15 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     @IBOutlet weak var singleImage: UIImageView!
     @IBOutlet weak var captionTableView: UITableView!
     @IBOutlet weak var captionText: UITextField!
-    
     @IBOutlet weak var singleImageView: UIView!
-    
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var capScore: UILabel!
     
     @IBAction func hideSingleImageView(_ sender: Any) {
+        captionText.endEditing(true)
+        let returnYContraint = UIScreen.main.bounds.height - 50
+        captionText.frame.origin.y = returnYContraint
+        submitButton.frame.origin.y = returnYContraint
         singleImageView.isHidden = true
         self.captions.removeAll()
         self.captionTableView.reloadData()
@@ -221,6 +224,22 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         return CGSize(width: width, height: width)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("hiii")
+        let textBoxHeight = singleImage.frame.origin.y + singleImage.bounds.height - 40
+        captionText.frame.origin.y = textBoxHeight
+        submitButton.frame.origin.y = textBoxHeight
+    }
+    
+    
+    func textFieldShouldReturn(_ textFields: UITextField) -> Bool {
+        self.view.endEditing(true)
+        let returnYContraint = UIScreen.main.bounds.height - 50
+        captionText.frame.origin.y = returnYContraint
+        submitButton.frame.origin.y = returnYContraint
+        return true
+    }
+    
     @IBAction func backToSearch(_ sender: Any) {
         performSegue(withIdentifier: "backToSearchSegue", sender: self)
     }
@@ -305,10 +324,12 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        captionText.delegate = self
         profilePicture.layer.cornerRadius = 32.0
         profilePicture.clipsToBounds = true
         self.captionTableView.delegate = self
-        self.singleImageView.isHidden = true 
+        self.singleImageView.isHidden = true
+        submitButton.layer.cornerRadius = 5
         
         reloadPage()
 

@@ -29,6 +29,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var downVotes = [[String]]()
     var singleImageForCaption = Int()
     
+    
+    
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var followingButton: UIButton!
     @IBOutlet weak var followersButton: UIButton!
     @IBOutlet weak var profilePicture: UIImageView!
@@ -103,6 +106,9 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBAction func hideSingleImageView(_ sender: Any) {
         newCaptionText.endEditing(true)
+        let returnYContraint = UIScreen.main.bounds.height - 50
+        newCaptionText.frame.origin.y = returnYContraint
+        submitButton.frame.origin.y = returnYContraint
         singleImageView.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
         self.captions.removeAll()
@@ -204,8 +210,18 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         return CGSize(width: width, height: width)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let textBoxHeight = singleImage.frame.origin.y + singleImage.bounds.height - 40
+        newCaptionText.frame.origin.y = textBoxHeight
+        submitButton.frame.origin.y = textBoxHeight
+    }
+    
+    
     func textFieldShouldReturn(_ textFields: UITextField) -> Bool {
         self.view.endEditing(true)
+        let returnYContraint = UIScreen.main.bounds.height - 50
+        newCaptionText.frame.origin.y = returnYContraint
+        submitButton.frame.origin.y = returnYContraint
         return true
     }
     
@@ -219,6 +235,7 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         newCaptionText.delegate = self
         settingsView.isHidden = true
         settingsView.layer.cornerRadius = 20
+        submitButton.layer.cornerRadius = 5
 
         let storage = Storage.storage()
         let ref: DatabaseReference!
