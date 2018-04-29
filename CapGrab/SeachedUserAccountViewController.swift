@@ -225,7 +225,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("hiii")
         let textBoxHeight = singleImage.frame.origin.y + singleImage.bounds.height - 40
         captionText.frame.origin.y = textBoxHeight
         submitButton.frame.origin.y = textBoxHeight
