@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -528,10 +529,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-jt-1kB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-jt-1kB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="d0H-jt-1kB" secondAttribute="height" multiplier="375:478" id="D0h-45-h9o"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-EO-bvh">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-EO-bvh">
                                 <rect key="frame" x="114" y="498" width="147" height="30"/>
                                 <state key="normal" title="Browse Photo Library"/>
                                 <connections>
@@ -545,7 +549,7 @@
                                     <action selector="uploadImage:" destination="ye6-cw-VHf" eventType="touchUpInside" id="WtM-69-dFQ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadscreen" translatesAutoresizingMaskIntoConstraints="NO" id="zWR-Bw-n6F">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="upload-bg" translatesAutoresizingMaskIntoConstraints="NO" id="zWR-Bw-n6F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
                             </imageView>
                         </subviews>
@@ -555,12 +559,12 @@
                             <constraint firstItem="zWR-Bw-n6F" firstAttribute="leading" secondItem="I08-U4-xkJ" secondAttribute="leading" id="DLP-D6-cHk"/>
                             <constraint firstItem="bYp-jj-a2x" firstAttribute="top" secondItem="UPp-EO-bvh" secondAttribute="bottom" constant="25" id="KTy-fB-Fdb"/>
                             <constraint firstItem="I08-U4-xkJ" firstAttribute="bottom" secondItem="bYp-jj-a2x" secondAttribute="bottom" constant="35" id="OEA-fs-9dK"/>
+                            <constraint firstItem="UPp-EO-bvh" firstAttribute="top" secondItem="d0H-jt-1kB" secondAttribute="bottom" constant="20" id="Ozr-rs-1c3"/>
                             <constraint firstItem="d0H-jt-1kB" firstAttribute="trailing" secondItem="I08-U4-xkJ" secondAttribute="trailing" id="fR5-q8-kCA"/>
                             <constraint firstItem="d0H-jt-1kB" firstAttribute="leading" secondItem="I08-U4-xkJ" secondAttribute="leading" id="hNZ-Gw-CRe"/>
                             <constraint firstItem="zWR-Bw-n6F" firstAttribute="top" secondItem="jQw-We-Oid" secondAttribute="top" id="hZZ-44-yWs"/>
                             <constraint firstItem="UPp-EO-bvh" firstAttribute="centerX" secondItem="jQw-We-Oid" secondAttribute="centerX" id="mpN-HH-8t9"/>
                             <constraint firstItem="UPp-EO-bvh" firstAttribute="top" secondItem="zWR-Bw-n6F" secondAttribute="bottom" constant="20" id="naI-jI-j37"/>
-                            <constraint firstItem="UPp-EO-bvh" firstAttribute="top" secondItem="d0H-jt-1kB" secondAttribute="bottom" constant="20" id="nhC-FJ-sb5"/>
                             <constraint firstItem="zWR-Bw-n6F" firstAttribute="trailing" secondItem="I08-U4-xkJ" secondAttribute="trailing" id="oda-rR-6V4"/>
                             <constraint firstItem="bYp-jj-a2x" firstAttribute="centerX" secondItem="jQw-We-Oid" secondAttribute="centerX" id="x0A-xb-jJ1"/>
                         </constraints>
@@ -966,10 +970,10 @@
         <image name="3A7DF9" width="375" height="667"/>
         <image name="forumpage" width="375" height="667"/>
         <image name="loginpagelogo" width="468" height="84"/>
-        <image name="uploadscreen" width="375" height="478"/>
+        <image name="upload-bg" width="1125" height="1434"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qEH-sb-rOI"/>
+        <segue reference="dx3-fE-rgM"/>
         <segue reference="2ew-Qu-I9c"/>
     </inferredMetricsTieBreakers>
 </document>
