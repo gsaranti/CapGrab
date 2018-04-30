@@ -45,6 +45,8 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
     @IBOutlet weak var singleImageView: UIView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var capScore: UILabel!
+    @IBOutlet weak var followersButton: UIButton!
+    @IBOutlet weak var followingButton: UIButton!
     
     @IBAction func hideSingleImageView(_ sender: Any) {
         captionText.endEditing(true)
@@ -326,6 +328,8 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         self.captionTableView.delegate = self
         self.singleImageView.isHidden = true
         submitButton.layer.cornerRadius = 5
+        followersButton.layer.cornerRadius = 5
+        followingButton.layer.cornerRadius = 5
         
         reloadPage()
     }

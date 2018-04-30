@@ -853,6 +853,8 @@
                         <outlet property="captionTableView" destination="pri-R7-doX" id="niw-ml-Rma"/>
                         <outlet property="captionText" destination="l98-CI-beW" id="jEk-Q8-Szm"/>
                         <outlet property="followButton" destination="7c4-mD-3Dq" id="Hng-rL-2Fe"/>
+                        <outlet property="followersButton" destination="X7D-lF-Fgs" id="21x-OP-P97"/>
+                        <outlet property="followingButton" destination="uRy-PA-j0X" id="cQ3-pu-1mE"/>
                         <outlet property="profilePicture" destination="5yH-BU-zVI" id="VDc-ga-35O"/>
                         <outlet property="singleImage" destination="J3n-yQ-8Ni" id="KED-Yi-3a4"/>
                         <outlet property="singleImageView" destination="cqE-pG-2Ho" id="Q6e-zg-V4q"/>
@@ -998,7 +1000,7 @@
         <image name="upload-bg" width="1125" height="1434"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Shq-bn-os3"/>
+        <segue reference="dx3-fE-rgM"/>
         <segue reference="2ew-Qu-I9c"/>
     </inferredMetricsTieBreakers>
 </document>
