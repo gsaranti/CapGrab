@@ -55,6 +55,8 @@
 		4CC0FBBA6BBCA5735E06BB1F /* Pods_CapGrab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapGrab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F03A826B0C3B272DD58D212 /* Pods_CapGrabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapGrabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		665FB5A6A8201C28AA9B3BFC /* Pods_CapGrabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapGrabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3F3B6312096EA260049893E /* AvenirNext-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.otf"; sourceTree = "<group>"; };
+		A3F3B6322096EA260049893E /* AvenirNext-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Bold.otf"; sourceTree = "<group>"; };
 		A7F0C3693A74190BB067EF15 /* Pods-CapGrabTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabTests/Pods-CapGrabTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9768A52AF3138F84A171E48 /* Pods-CapGrabUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrabUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrabUITests/Pods-CapGrabUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2849FE3FD966490A0D01E73 /* Pods-CapGrab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapGrab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CapGrab/Pods-CapGrab.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A3F3B6302096EA1E0049893E /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A3F3B6322096EA260049893E /* AvenirNext-Bold.otf */,
+				A3F3B6312096EA260049893E /* AvenirNext-Regular.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		FF9EC8AD2029302100ADFAD3 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +191,7 @@
 				FFC8D41E2044EC200072F936 /* NotificationTableViewCell.swift */,
 				FFDE69CE203B94AE0096D45D /* ForumViewController.swift */,
 				FF9EC8BD2029302100ADFAD3 /* Main.storyboard */,
+				A3F3B6302096EA1E0049893E /* fonts */,
 				FF9EC8C32029302100ADFAD3 /* Assets.xcassets */,
 				FF9EC8C52029302100ADFAD3 /* LaunchScreen.storyboard */,
 				FF9EC8C82029302100ADFAD3 /* Info.plist */,
