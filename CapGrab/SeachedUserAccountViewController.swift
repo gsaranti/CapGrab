@@ -250,7 +250,7 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         ref.child("users").child(searchedUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.userName.text = (value?["userName"] as! String)
-            self.capScore.text = String(value?["capScore"] as! Int)
+            self.capScore.text = "CapScore: \(String(value?["capScore"] as! Int))"
             
             if (value?["followers"] as? [String]) != nil {
                 self.followersArray = (value?["followers"] as? [String])!
