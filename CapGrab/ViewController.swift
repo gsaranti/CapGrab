@@ -150,7 +150,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         profilePicture.isHidden = true
         passwordCheck.isHidden = true
         profilePicture.image = UIImage(named: "images")
-        profilePicture.layer.cornerRadius = 40.0
+        profilePicture.layer.cornerRadius = 38.0
         profilePicture.clipsToBounds = true
         selectPicture.isHidden = true
         email.placeholder = "Email"
@@ -167,9 +167,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
 }
 

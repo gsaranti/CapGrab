@@ -115,7 +115,6 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
                 }){ (error) in
                     print(error.localizedDescription)
                 }
-
             }
         }){ (error) in
             print(error.localizedDescription)

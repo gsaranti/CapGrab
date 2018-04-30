@@ -328,8 +328,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         submitButton.layer.cornerRadius = 5
         
         reloadPage()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

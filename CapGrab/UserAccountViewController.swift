@@ -295,10 +295,4 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
-
 }
