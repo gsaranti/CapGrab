@@ -23,7 +23,6 @@ class CaptionTableViewCell: UITableViewCell {
     var specificCaption = String()
     var upVotes = [String]()
     var downVotes = [String]()
- 
     
     @IBAction func upVoteAction(_ sender: Any) {
         let ref: DatabaseReference
@@ -61,7 +60,6 @@ class CaptionTableViewCell: UITableViewCell {
                 ref.child("photos/\(self.userID)/\(self.specificImage)/\(self.specificCaption)/upVotes").setValue(self.upVotes)
                 self.captionScore.text = String(Int(self.captionScore.text!)! + 1)
             }
-            print(self.upVotes)
         })
     }
     
@@ -69,7 +67,6 @@ class CaptionTableViewCell: UITableViewCell {
         let ref: DatabaseReference
         ref = Database.database().reference()
         var capGrabScore = Int()
-        print(self.downVotes)
         
         ref.child("users").child(self.postedBy).child("capScore").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -105,8 +102,6 @@ class CaptionTableViewCell: UITableViewCell {
         })
     }
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -117,5 +112,4 @@ class CaptionTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-
 }

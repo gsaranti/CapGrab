@@ -10,6 +10,8 @@
 //  https://stackoverflow.com/questions/46091920/how-to-make-a-loop-wait-until-task-is-finished
 //  https://stackoverflow.com/questions/38028013/how-to-set-uicollectionviewcell-width-and-height-programmatically
 //  https://stackoverflow.com/questions/24110762/swift-determine-ios-screen-size
+//  https://firebase.google.com/docs/auth/ios/password-auth
+//  https://firebase.google.com/docs/storage/ios/download-files
 //
 
 import UIKit
@@ -28,8 +30,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var upVotes = [[String]]()
     var downVotes = [[String]]()
     var singleImageForCaption = Int()
-    
-    
     
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var followingButton: UIButton!
@@ -102,7 +102,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         self.newCaptionText.text?.removeAll()
     }
-    
     
     @IBAction func hideSingleImageView(_ sender: Any) {
         newCaptionText.endEditing(true)
@@ -203,7 +202,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         singleImageView.isHidden = false
     }
     
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = UIScreen.main.bounds.width / 3
@@ -215,7 +213,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         newCaptionText.frame.origin.y = textBoxHeight
         submitButton.frame.origin.y = textBoxHeight
     }
-    
     
     func textFieldShouldReturn(_ textFields: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -257,8 +254,8 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             if (value?["following"] as? [String]) != nil {
                 self.following = (value?["following"] as? [String])!
             }
-            self.followersButton.setTitle("\(self.followers.count) \nFollowers", for: [])
-            self.followingButton.setTitle("\(self.following.count) \nFollowing", for: [])
+            self.followersButton.setTitle("\(self.followers.count) \nFollowers", for: .normal)
+            self.followingButton.setTitle("\(self.following.count) \nFollowing", for: .normal)
             self.followersButton.layer.cornerRadius = 5.0
             self.followingButton.layer.cornerRadius = 5.0
             
@@ -294,7 +291,6 @@ class UserAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         userName.sizeToFit()
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

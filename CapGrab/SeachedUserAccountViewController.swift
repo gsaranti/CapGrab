@@ -97,7 +97,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             }
             
             self.notificationArray.insert(self.currentUserID!, at: 0)
-            print(self.notificationArray)
             ref.child("users/\(self.searchedUserID)/notifications").setValue(self.notificationArray)
         }) { (error) in
             print(error.localizedDescription)
@@ -230,7 +229,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         submitButton.frame.origin.y = textBoxHeight
     }
     
-    
     func textFieldShouldReturn(_ textFields: UITextField) -> Bool {
         self.view.endEditing(true)
         let returnYContraint = UIScreen.main.bounds.height - 50
@@ -264,14 +262,14 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
             
             if(self.followersArray.contains(self.currentUserID!)) {
                 self.isFollower = true
-                self.followButton.setTitle("Unfollow", for: [])
+                self.followButton.setTitle("Unfollow", for: .normal)
             } else if(self.followRequests.contains(self.currentUserID!)) {
                 self.isFollower = false
                 self.hasRequested = true
-                self.followButton.setTitle("Pending", for: [])
+                self.followButton.setTitle("Pending", for: .normal)
             } else {
                 self.isFollower = false
-                self.followButton.setTitle("Follow", for: [])
+                self.followButton.setTitle("Follow", for: .normal)
             }
             
             if(self.isFollower == true) {
@@ -317,7 +315,6 @@ class SeachedUserAccountViewController: UIViewController, UICollectionViewDelega
         }){ (error) in
             print(error.localizedDescription)
         }
-            
     }
     
     override func viewDidLoad() {

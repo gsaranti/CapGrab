@@ -11,7 +11,6 @@ import FirebaseDatabase
 
 class SearchedUserCaptionTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var captionText: UILabel!
     
     @IBOutlet weak var upVoteButton: UIButton!
@@ -60,7 +59,6 @@ class SearchedUserCaptionTableViewCell: UITableViewCell {
         })
     }
     
-    
     @IBAction func downVote(_ sender: Any) {
         let ref: DatabaseReference
         ref = Database.database().reference()
@@ -107,5 +105,4 @@ class SearchedUserCaptionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

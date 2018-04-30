@@ -6,6 +6,7 @@
 //  Copyright © 2018 George Sarantinos. All rights reserved.
 //
 //  https://firebase.google.com/docs/database/ios/read-and-write
+//  https://firebase.google.com/docs/storage/ios/create-reference
 //
 
 import UIKit

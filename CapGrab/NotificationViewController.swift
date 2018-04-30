@@ -49,7 +49,7 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
             cell.notificationMessage.text = "\(currentUserFollowRequestUserNames[indexPath.item])"
-            cell.notificationButton.setTitle("Accept", for: [])
+            cell.notificationButton.setTitle("Accept", for: .normal)
             cell.notificationButton.isHidden = false
             if(self.currentUserFollowers.count >= 20) {
                 cell.notificationButton.isEnabled = false
@@ -127,12 +127,9 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! SeachedUserAccountViewController
         destination.searchedUserID = segueUserID
         destination.lastViewController = "NotificationViewController"
     }
-
 }

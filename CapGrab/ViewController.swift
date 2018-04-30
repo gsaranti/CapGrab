@@ -11,6 +11,7 @@
 //  https://www.youtube.com/watch?v=_sBUwR128m4
 //  https://www.youtube.com/watch?v=NxLAc1nnNVs&t=290s
 //  https://stackoverflow.com/questions/41537721/how-to-hide-keyboard-when-return-key-is-hit-swift/41537966?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+//  https://firebase.google.com/docs/auth/ios/password-auth
 //
 
 import UIKit
@@ -96,8 +97,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             Auth.auth().createUser(withEmail: email.text!, password: password.text!, completion: { (user, error) in
                 if error != nil {
-                    print(error?.localizedDescription as Any)
-                    return
+                    if let signinError = error?.localizedDescription {
+                        print(signinError)
+                        return
+                    }
                 }
                 let storage = Storage.storage()
                 let storageRef = storage.reference(forURL: "gs://capgrab-d673e.appspot.com").child("profilePicutres").child((user?.uid)!)
@@ -158,7 +161,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imageLibrary.delegate = self
         imageLibrary.sourceType = .photoLibrary
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {

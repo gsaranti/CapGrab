@@ -4,6 +4,8 @@
 //
 //  Created by George Sarantinos on 2/19/18.
 //  Copyright © 2018 George Sarantinos. All rights reserved.
+//
+//  https://stackoverflow.com/questions/24792798/swift-uisearchbar-get-text-when-search-button-clicked/24793413?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
 
 import UIKit
